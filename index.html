@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Vty : client SSH et console série pour switchs Cisco, avec garde-fous, sauvegardes de configs et audit sécu. Version gratuite pour Windows, Pro à 45 €.">
-<title>Vty</title>
+<meta name="description" content="Vty : client SSH et console série pour gérer un parc de switchs Cisco. Sessions rangées par dossiers, écran partagé, macros, sauvegardes de configs, commandes en masse et audit sécu. Gratuit pour Windows, Pro à 45 €.">
+<title>Vty · client SSH et console série pour switchs Cisco</title>
 <link rel="canonical" href="https://getvty.com/">
 <style>
 /* Polices hébergées sur le site (aucune requête vers Google) — SIL Open Font License */
@@ -165,25 +165,28 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
   <div class="hero">
     <div>
       <span class="status"><span class="ledd"></span>v<span data-ver>1.4.1</span> · Windows 10 / 11</span>
-      <h1>Le terminal réseau qui t'empêche de faire un <code>reload</code> par erreur.</h1>
-      <p class="lead">Client SSH et console série pour switchs Cisco, pensé pour les équipes qui gèrent des centaines d'équipements. Sauvegardes de configs, audit sécu noté de A à E, commandes en masse et garde-fous intégrés.</p>
+      <h1>Le client SSH pour gérer tout ton parc réseau.</h1>
+      <p class="lead">SSH et console série pour switchs Cisco, pensé pour les équipes qui gèrent des dizaines ou des centaines d'équipements. Parc rangé par dossiers, écran partagé, macros, sauvegardes de configs, commandes en masse et audit sécu noté de A à E. Avec des garde-fous en plus contre les erreurs.</p>
       <div class="ctas">
         <a class="btn primary" href="https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi">⬇ Télécharger gratuitement</a>
         <a class="btn ghost" href="#demo">▶ Voir la démo</a>
-        <a class="btn ghost" href="#tarifs">Gratuit ou Pro ?</a>
       </div>
-      <p class="meta">Installeur .msi · <span data-size>16 Mo</span> · aucun mot de passe enregistré</p>
+      <p class="meta">Installeur .msi · <span data-size>16 Mo</span> · aucun mot de passe enregistré · <a href="#tarifs">Gratuit ou Pro ?</a></p>
     </div>
 
-    <div class="term" role="img" aria-label="Aperçu de Vty : une commande reload interceptée par les garde-fous">
+    <div class="term" role="img" aria-label="Aperçu de Vty : sessions SSH en onglets sur plusieurs switchs">
       <div class="tbar">
         <span class="tab on">CORE-SW-01 <span class="crit">●</span></span><span class="tab">ACCESS-SW-12</span><span class="tab">DIST-SW-03</span><span class="tab">+</span>
       </div>
       <div class="tbody"><span class="d">Connecté · ssh admin@10.0.0.1 · empreinte vérifiée</span>
 <span class="p">CORE-SW-01#</span> show version | include uptime
-CORE-SW-01 uptime is 214 days, 6 hours, 12 minutes
-<span class="p">CORE-SW-01#</span> rel<span class="caret"></span><div class="guard"><b>⚠ GARDE-FOU · DANGER</b><br>« rel » = <strong>reload</strong> sur un équipement critique. Le switch va redémarrer et couper tout le site.<div class="in">Tape CONFIRMER pour envoyer : ▏</div></div></div>
-      <div class="tfoot"><span>curve25519-sha256 · aes256-gcm</span><span>🛡 Garde-fous actifs</span></div>
+CORE-SW-01 uptime is 214 days, 6 hours
+<span class="p">CORE-SW-01#</span> show ip int brief | include up
+Vlan10      10.0.0.1     up    up
+Te1/0/1     unassigned   up    up
+Te1/0/2     unassigned   up    up
+<span class="p">CORE-SW-01#</span><span class="caret"></span></div>
+      <div class="tfoot"><span>curve25519-sha256 · aes256-gcm</span><span>3 sessions · 20 équipements</span></div>
     </div>
   </div>
 </div>
@@ -191,7 +194,7 @@ CORE-SW-01 uptime is 214 days, 6 hours, 12 minutes
 <section id="demo"><div class="wrap">
   <p class="eyebrow"><b>vty#</b> show demo</p>
   <h2>Vty en 1 min 50.</h2>
-  <p class="intro">Garde-fous, écran partagé, macros, sauvegardes, commandes en masse et audit sécu, filmés sur un parc fictif de 20 switchs.</p>
+  <p class="intro">Sessions SSH, écran partagé, macros, sauvegardes, commandes en masse, audit sécu et garde-fous, filmés sur un parc fictif de 20 switchs.</p>
   <figure class="shot demo">
     <video controls playsinline preload="none" poster="video/vty-demo-poster.webp" width="3840" height="2160" aria-label="Démonstration vidéo de Vty">
       <source src="video/vty-demo-4k.mp4" type="video/mp4">

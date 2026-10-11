@@ -6,9 +6,9 @@ Client SSH et console série pour switchs Cisco, pensé pour les équipes qui g�
 
 ## Télécharger
 
-[⬇ Vty 1.4.2 pour Windows](https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi) · Windows 10 / 11 x64 · gratuit, Pro à 45 € HT
+[⬇ Vty 1.5.0 pour Windows](https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi) · Windows 10 / 11 x64 · gratuit, Pro à 45 € HT
 
-SHA-256 : `f7b77487e4936130bf6e41ee83db5f2e84504e5916834c7b3117dd84d085de1b`
+SHA-256 : `b2279df741aa22cd1fa78ed9a63eb44b3069bd92658e776ae27f7dc9ba5f2006`
 
 Si Windows affiche « Windows a protégé votre ordinateur » : **Informations complémentaires → Exécuter quand même** (l'installeur n'est pas encore signé).
 

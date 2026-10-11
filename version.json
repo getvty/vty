@@ -1,9 +1,12 @@
 {
-  "version": "1.4.2",
+  "version": "1.5.0",
   "date": "2026-10-11",
   "notes": [
-    "Exemples et textes de l'audit rendus génériques (supervision SNMP, collecteur syslog / SOC), VLAN par défaut des macros : 20 et 30.",
-    "Site : aperçu de partage et icône."
+    "Connexion par clé SSH (OpenSSH, PEM, PKCS#8) ou par agent (Pageant, agent OpenSSH de Windows) : seul l'emplacement de la clé est enregistré, la phrase secrète est demandée à chaque connexion.",
+    "Telnet pour les vieux équipements, avec un bandeau « non chiffré » bien visible.",
+    "Journaux de session automatiques dans des fichiers texte (désactivés par défaut, réglables par équipement).",
+    "Import des sessions MobaXterm et PuTTY (dossiers conservés, identifiants jamais importés).",
+    "Mauvais mot de passe : Vty redemande au lieu de couper."
   ],
   "page": "https://getvty.com/#telecharger"
 }

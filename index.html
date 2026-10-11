@@ -180,7 +180,7 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
 
   <div class="hero">
     <div>
-      <span class="status"><span class="ledd"></span>v<span data-ver>1.4.2</span> · Windows 10 / 11</span>
+      <span class="status"><span class="ledd"></span>v<span data-ver>1.5.0</span> · Windows 10 / 11</span>
       <h1>Le client SSH pour gérer tout ton parc réseau.</h1>
       <p class="lead">SSH et console série pour switchs Cisco, pensé pour les équipes qui gèrent des dizaines ou des centaines d'équipements. Parc rangé par dossiers, écran partagé, macros, sauvegardes de configs, commandes en masse et audit sécu noté de A à E. Avec des garde-fous en plus contre les erreurs.</p>
       <div class="ctas">
@@ -327,6 +327,7 @@ Te1/0/2     unassigned   up    up
   <h2>Historique</h2>
   <div class="log">
     <!--versions-->
+    <div class="rel"><b>1.5.0</b><p>Connexion par clé SSH (OpenSSH, PEM, PKCS#8) ou par agent (Pageant, agent OpenSSH de Windows) : seul l&#x27;emplacement de la clé est enregistré, la phrase secrète est demandée à chaque connexion. Telnet pour les vieux équipements, avec un bandeau « non chiffré » bien visible. Journaux de session automatiques dans des fichiers texte (désactivés par défaut, réglables par équipement). Import des sessions MobaXterm et PuTTY (dossiers conservés, identifiants jamais importés). Mauvais mot de passe : Vty redemande au lieu de couper.</p></div>
     <div class="rel"><b>1.4.2</b><p>Exemples et textes de l&#x27;audit rendus génériques (supervision SNMP, collecteur syslog / SOC), VLAN par défaut des macros : 20 et 30. Site : aperçu de partage et icône.</p></div>
     <div class="rel"><b>1.4.1</b><p>Vty signale les nouvelles versions au démarrage, avec les nouveautés et un lien vers le site (désactivable dans la fenêtre Licence). Rien n&#x27;est téléchargé ni installé automatiquement, et aucune donnée n&#x27;est envoyée.</p></div>
     <div class="rel"><b>1.4.0</b><p>Version gratuite (SSH, console série, garde-fous, 25 équipements) et version Pro (tout le reste, équipements illimités). Licence Pro à vie, vérifiée sur le poste sans connexion Internet, avec 1 an de mises à jour.</p></div>
@@ -340,16 +341,16 @@ Te1/0/2     unassigned   up    up
       <h2>Télécharger Vty</h2>
       <p>Installe, ouvre, importe ton CSV d'équipements, et c'est parti. La même installation sert pour la version gratuite et la version Pro : il suffit de coller ta clé de licence.</p>
       <div class="ctas" style="margin-top:22px">
-        <a class="btn primary" href="https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi">⬇ Vty <span data-ver>1.4.2</span> pour Windows</a>
+        <a class="btn primary" href="https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi">⬇ Vty <span data-ver>1.5.0</span> pour Windows</a>
       </div>
       <div class="proof">
-        <p class="vt"><i></i><a href="https://www.virustotal.com/gui/file/f7b77487e4936130bf6e41ee83db5f2e84504e5916834c7b3117dd84d085de1b" rel="noopener">Analyse VirusTotal de l'installeur</a><span data-vt-score>&nbsp;: 59 antivirus sur 60 ne signalent rien, 1 alerte générique de Zillya (faux positif courant sur les installeurs non signés), version 1.4.2</span></p>
+        <p class="vt"><i></i><a href="https://www.virustotal.com/gui/file/b2279df741aa22cd1fa78ed9a63eb44b3069bd92658e776ae27f7dc9ba5f2006" rel="noopener">Analyse VirusTotal de l'installeur</a><span data-vt-score></span></p>
         <p>Si Windows affiche « Windows a protégé votre ordinateur » : Informations complémentaires, puis Exécuter quand même. L'installeur n'est pas encore signé.</p>
-        <p class="hash">SHA-256 : <span data-sha>f7b77487e4936130bf6e41ee83db5f2e84504e5916834c7b3117dd84d085de1b</span></p>
+        <p class="hash">SHA-256 : <span data-sha>b2279df741aa22cd1fa78ed9a63eb44b3069bd92658e776ae27f7dc9ba5f2006</span></p>
       </div>
     </div>
     <div class="specs">
-      <div><span>Version</span><span data-ver>1.4.2</span></div>
+      <div><span>Version</span><span data-ver>1.5.0</span></div>
       <div><span>Système</span><span>Windows 10 / 11 x64</span></div>
       <div><span>Format</span><span>.msi · <span data-size>16 Mo</span></span></div>
       <div><span>Équipements</span><span>Cisco IOS / IOS-XE et tout appareil SSH</span></div>

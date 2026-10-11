@@ -1,5 +1,36 @@
 # Vty
 
+SSH client and serial console for Cisco switches, built for teams that manage hundreds of devices.
+
+**Website: https://getvty.com/en/** · [Version française](#vty-fr)
+
+## Download
+
+[⬇ Vty 1.5.0 for Windows](https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi) · Windows 10 / 11 x64 · free, Pro €45 excl. VAT
+
+SHA-256: `b2279df741aa22cd1fa78ed9a63eb44b3069bd92658e776ae27f7dc9ba5f2006`
+
+If Windows shows “Windows protected your PC”: **More info → Run anyway** (the installer isn't signed yet).
+
+## Features
+
+- Safeguards: reload, write erase, trunk without `add`… caught before they are sent
+- Multi-exec, split screen up to 4 terminals, CSV / MobaXterm / PuTTY import
+- SSH password, key or agent (Pageant), Telnet, serial console, session logs
+- Config backups with history and compare
+- Security audit graded A to E (82 checks, CIS / DISA STIG / ANSSI)
+- Known vulnerabilities via the Cisco PSIRT API
+- Read-only bulk commands, macros, SFTP / SCP with MD5
+- No password ever saved, listens on localhost only
+- English and French interface
+
+This repository holds the website and the published releases.
+
+---
+
+<a id="vty-fr"></a>
+# Vty
+
 Client SSH et console série pour switchs Cisco, pensé pour les équipes qui gèrent des centaines d'équipements.
 
 **Site : https://getvty.com**

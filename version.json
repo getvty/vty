@@ -8,5 +8,13 @@
     "Import des sessions MobaXterm et PuTTY (dossiers conservés, identifiants jamais importés).",
     "Mauvais mot de passe : Vty redemande au lieu de couper."
   ],
-  "page": "https://getvty.com/#telecharger"
+  "page": "https://getvty.com/#telecharger",
+  "notes_en": [
+    "SSH key login (OpenSSH, PEM, PKCS#8) or agent (Pageant, Windows OpenSSH agent): only the key location is saved, the passphrase is asked at each connection.",
+    "Telnet for old devices, with a clearly visible “unencrypted” banner.",
+    "Automatic session logs to text files (off by default, configurable per device).",
+    "Import of MobaXterm and PuTTY sessions (folders kept, credentials never imported).",
+    "Wrong password: Vty asks again instead of disconnecting."
+  ],
+  "page_en": "https://getvty.com/en/#download"
 }

@@ -1,9 +1,9 @@
 {
-  "version": "1.4.1",
+  "version": "1.4.2",
   "date": "2026-10-11",
   "notes": [
-    "Vty signale les nouvelles versions au démarrage, avec les nouveautés et un lien vers le site (désactivable dans la fenêtre Licence).",
-    "Rien n'est téléchargé ni installé automatiquement, et aucune donnée n'est envoyée."
+    "Exemples et textes de l'audit rendus génériques (supervision SNMP, collecteur syslog / SOC), VLAN par défaut des macros : 20 et 30.",
+    "Site : aperçu de partage et icône."
   ],
   "page": "https://getvty.com/#telecharger"
 }

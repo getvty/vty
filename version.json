@@ -1,20 +1,16 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "date": "2026-10-11",
   "notes": [
-    "Connexion par clé SSH (OpenSSH, PEM, PKCS#8) ou par agent (Pageant, agent OpenSSH de Windows) : seul l'emplacement de la clé est enregistré, la phrase secrète est demandée à chaque connexion.",
-    "Telnet pour les vieux équipements, avec un bandeau « non chiffré » bien visible.",
-    "Journaux de session automatiques dans des fichiers texte (désactivés par défaut, réglables par équipement).",
-    "Import des sessions MobaXterm et PuTTY (dossiers conservés, identifiants jamais importés).",
-    "Mauvais mot de passe : Vty redemande au lieu de couper."
+    "Vty en anglais : l'interface suit la langue de Windows (français ou anglais), avec un choix manuel en bas à gauche (FR / EN).",
+    "Messages, rapports d'audit, journaux de session et macros fournies traduits ; les dates s'affichent au format AAAA-MM-JJ en anglais.",
+    "Site en anglais : getvty.com/en."
+  ],
+  "notes_en": [
+    "Vty in English: the interface follows the Windows language (French or English), with a manual switch at the bottom left (FR / EN).",
+    "Messages, audit reports, session logs and built-in macros translated; dates are shown as YYYY-MM-DD in English.",
+    "English website: getvty.com/en."
   ],
   "page": "https://getvty.com/#telecharger",
-  "notes_en": [
-    "SSH key login (OpenSSH, PEM, PKCS#8) or agent (Pageant, Windows OpenSSH agent): only the key location is saved, the passphrase is asked at each connection.",
-    "Telnet for old devices, with a clearly visible “unencrypted” banner.",
-    "Automatic session logs to text files (off by default, configurable per device).",
-    "Import of MobaXterm and PuTTY sessions (folders kept, credentials never imported).",
-    "Wrong password: Vty asks again instead of disconnecting."
-  ],
   "page_en": "https://getvty.com/en/#download"
 }

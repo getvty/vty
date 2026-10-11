@@ -1,6 +1,9 @@
 {
-  "version": "1.4.0",
+  "version": "1.4.1",
   "date": "2026-10-11",
-  "notes": [],
+  "notes": [
+    "Vty signale les nouvelles versions au démarrage, avec les nouveautés et un lien vers le site (désactivable dans la fenêtre Licence).",
+    "Rien n'est téléchargé ni installé automatiquement, et aucune donnée n'est envoyée."
+  ],
   "page": "https://getvty.com/#telecharger"
 }

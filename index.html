@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Vty : client SSH et console série pour gérer un parc de switchs Cisco. Sessions rangées par dossiers, écran partagé, macros, sauvegardes de configs, commandes en masse et audit sécu. Gratuit pour Windows, Pro à 45 €.">
-<title>Vty · client SSH et console série pour switchs Cisco</title>
+<meta name="description" content="Vty réunit sessions SSH, sauvegardes de configs, audit de sécurité et commandes en masse pour tes switchs Cisco, dans un seul outil Windows. Gratuit jusqu'à 25 équipements, Pro à 45 €.">
+<title>Vty · gère tout ton parc Cisco depuis une seule fenêtre</title>
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
@@ -13,8 +13,8 @@
 <meta property="og:site_name" content="Vty">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://getvty.com/">
-<meta property="og:title" content="Vty · le client SSH pour gérer tout ton parc réseau">
-<meta property="og:description" content="SSH et console série pour switchs Cisco : parc rangé par dossiers, écran partagé, macros, sauvegardes de configs, commandes en masse et audit sécu. Gratuit pour Windows.">
+<meta property="og:title" content="Vty · gère 200 switchs Cisco comme s'il n'y en avait qu'un">
+<meta property="og:description" content="Sessions SSH, sauvegardes de configs, audit de sécurité et commandes en masse dans un seul outil Windows. Gratuit jusqu'à 25 équipements.">
 <meta property="og:image" content="https://getvty.com/img/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -24,6 +24,7 @@
 <link rel="alternate" hreflang="fr" href="https://getvty.com/">
 <link rel="alternate" hreflang="en" href="https://getvty.com/en/">
 <link rel="alternate" hreflang="x-default" href="https://getvty.com/en/">
+<link rel="preload" href="fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 /* Polices hébergées sur le site (aucune requête vers Google) — SIL Open Font License */
 @font-face{font-family:"Bricolage Grotesque";src:url(fonts/bricolage.woff2) format("woff2");font-weight:200 800;font-display:swap}
@@ -35,75 +36,129 @@
 @font-face{font-family:"JetBrains Mono";src:url(fonts/jbmono-700.woff2) format("woff2");font-weight:700;font-display:swap}
 </style>
 <style>
-/* Layout: equipment spec-sheet — hero with a live-looking console, then feature rows like front-panel port groups, download block at the end. Accent = console status LED amber. */
+/* Fiche d'équipement : héro avec une console qui configure 12 switchs d'un coup, puis les situations du quotidien,
+   les captures, les fonctions comme des groupes de ports en face avant. Accent = LED d'état ambre. */
 :root{
-  --bg:#F3F4F1; --paper:#FFFFFF; --ink:#151B20; --muted:#5C6770; --line:#D7DCD8;
-  --slate:#24313B; --led:#E39B1B; --led-ink:#7A4E00; --ok:#2F8A57; --danger:#C2412D;
-  --term-bg:#10161B; --term-fg:#D6E2EA; --term-dim:#6E8291;
+  --bg:#0E1317; --paper:#151C21; --ink:#E6ECEF; --muted:#94A2AC; --line:#26313A;
+  --slate:#B9C8D3; --led:#F0AE3A; --led-ink:#F6C468; --ok:#5DBB86; --danger:#E8705C;
+  --term-bg:#080C0F; --term-fg:#D6E2EA; --term-dim:#6E8291; --term-ok:#5DCB8E;
   --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
   --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0E1317; --paper:#151C21; --ink:#E6ECEF; --muted:#94A2AC; --line:#26313A;
-  --slate:#B9C8D3; --led:#F0AE3A; --led-ink:#F6C468; --ok:#5DBB86; --danger:#E8705C;
-  --term-bg:#080C0F; --term-fg:#D6E2EA; --term-dim:#6E8291; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0E1317; --paper:#151C21; --ink:#E6ECEF; --muted:#94A2AC; --line:#26313A;
-  --slate:#B9C8D3; --led:#F0AE3A; --led-ink:#F6C468; --ok:#5DBB86; --danger:#E8705C;
-  --term-bg:#080C0F; --term-fg:#D6E2EA; --term-dim:#6E8291; color-scheme:dark}
 *{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55}
-.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+[hidden]{display:none!important}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
 a{color:inherit}
 :focus-visible{outline:2px solid var(--led);outline-offset:3px}
-.preview{background:var(--led);color:#1A1200;font:500 13px var(--mono);text-align:center;padding:7px 16px}
+
+/* nav */
 nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px;flex-wrap:wrap}
-.brand{display:flex;align-items:center;gap:10px;font:800 20px var(--display);letter-spacing:-.01em}
+.brand{display:flex;align-items:center;gap:10px;font:800 20px var(--display);letter-spacing:-.01em;text-decoration:none}
 .mark{width:28px;height:28px;border-radius:6px;background:var(--slate);display:grid;place-items:center;color:var(--bg);font:700 13px var(--mono)}
-.navlinks{display:flex;gap:18px;font-size:14.5px;color:var(--muted);flex-wrap:wrap}
+.navlinks{display:flex;gap:6px 20px;font-size:14.5px;color:var(--muted);flex-wrap:wrap;align-items:center}
 .navlinks a{text-decoration:none}.navlinks a:hover{color:var(--ink)}
-.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:44px;align-items:center;padding-block:36px 64px}
-@media (max-width:860px){.hero{grid-template-columns:1fr;gap:30px;padding-block:20px 48px}}
-.status{display:inline-flex;align-items:center;gap:8px;font:500 12.5px var(--mono);color:var(--muted);}
+.navlinks .navdl{color:var(--ink);font-weight:600;border:1.5px solid var(--slate);border-radius:8px;padding:6px 12px}
+@media (max-width:720px){.navlinks .opt{display:none}}
+
+/* héro */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.02fr);gap:52px;align-items:center;padding-block:40px 76px}
+@media (max-width:900px){.hero{grid-template-columns:1fr;gap:34px;padding-block:18px 56px}}
+.status{display:inline-flex;align-items:center;gap:8px;font:500 13px var(--body);color:var(--muted)}
 .ledd{width:9px;height:9px;border-radius:50%;background:var(--led);box-shadow:0 0 0 3px color-mix(in srgb,var(--led) 25%,transparent)}
-@media (prefers-reduced-motion:no-preference){.ledd{animation:blink 2.4s steps(1) infinite}@keyframes blink{50%{opacity:.35}}}
-h1{font:800 clamp(38px,6vw,64px)/1.02 var(--display);letter-spacing:-.025em;margin:14px 0 18px;text-wrap:balance}
-h1 code{font:inherit;font-family:var(--mono);font-weight:700;letter-spacing:-.04em;font-size:.86em}
-.lead{font-size:18.5px;color:var(--muted);max-width:52ch;margin:0 0 26px}
+h1{font:800 clamp(40px,6.2vw,70px)/.98 var(--display);letter-spacing:-.032em;margin:16px 0 22px;text-wrap:balance}
+.lead{font-size:clamp(17px,1.6vw,19px);color:var(--muted);max-width:46ch;margin:0 0 28px}
+.lead b{color:var(--ink);font-weight:600}
 .ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.btn{display:inline-flex;align-items:center;gap:10px;font:600 15.5px var(--body);text-decoration:none;padding:13px 20px;border-radius:9px;border:1.5px solid var(--slate);cursor:pointer}
-.btn.primary{background:var(--slate);color:var(--bg)}
-.btn.primary:hover{background:var(--ink);border-color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 15.5px var(--body);text-decoration:none;padding:13px 20px;border-radius:9px;border:1.5px solid var(--slate);cursor:pointer}
+.btn svg{width:17px;height:17px;flex:none}
+.btn.primary{background:var(--led);border-color:var(--led);color:#1A1200}
+.btn.primary:hover{filter:brightness(1.08)}
 .btn.ghost{background:transparent;color:var(--ink)}
-.meta{font:13px var(--mono);color:var(--muted);margin-top:14px}
-/* terminal */
-.term{background:var(--term-bg);border-radius:12px;box-shadow:0 1px 0 var(--line),0 24px 50px -24px rgba(10,20,30,.45);overflow:hidden;min-width:0}
-.tbar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:color-mix(in srgb,var(--term-bg) 80%,#2a3843);border-bottom:1px solid #1f2a32}
+.btn.ghost:hover{background:color-mix(in srgb,var(--slate) 8%,transparent)}
+.meta{font-size:13.5px;color:var(--muted);margin:16px 0 0;display:flex;flex-wrap:wrap;gap:4px 16px}
+.meta span{display:inline-flex;align-items:center;gap:6px}
+.meta span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--ok)}
+
+/* console multi-exec */
+.term{background:var(--term-bg);border-radius:14px;box-shadow:0 1px 0 var(--line),0 30px 60px -28px rgba(10,20,30,.55);overflow:hidden;min-width:0;color:var(--term-fg)}
+.tbar{display:flex;align-items:center;gap:6px;padding:9px 12px;background:#18222A;border-bottom:1px solid #1f2a32;overflow:hidden}
 .tab{font:500 12px var(--mono);color:var(--term-dim);padding:4px 10px;border-radius:6px;white-space:nowrap}
-.tab.on{background:#1b252d;color:var(--term-fg)}
-.tab .crit{color:#F07B66}
-.tbody{padding:16px 18px 18px;font:13px/1.65 var(--mono);color:var(--term-fg);overflow-x:auto;white-space:pre-wrap}
+.tab.on{background:#24313B;color:var(--term-fg)}
+.mx{margin-left:auto;font:600 11.5px var(--mono);color:#1A1200;background:var(--led);border-radius:5px;padding:3px 8px;white-space:nowrap}
+.tbody{padding:16px 18px 6px;font:13px/1.7 var(--mono)}
 .tbody .p{color:#8FC3E8}.tbody .d{color:var(--term-dim)}
-.guard{white-space:normal;margin-top:12px;border:1px solid #6b2a20;background:#2a1411;border-radius:8px;padding:12px 14px;color:#F6D2CB;font-family:var(--body);font-size:13.5px}
-.guard b{color:#FF9C88;font-family:var(--mono);font-size:12px;letter-spacing:.06em}
-.guard .in{margin-top:9px;font:12.5px var(--mono);background:#170b09;border:1px solid #5a241b;border-radius:5px;padding:6px 9px;color:#fff}
+.cmd{white-space:pre}
+.fleet{list-style:none;margin:12px 0 0;padding:12px 0 14px;border-top:1px dashed #2a3843;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 12px;font:12px var(--mono)}
+@media (max-width:460px){.fleet{grid-template-columns:repeat(2,minmax(0,1fr))}.tbar .tab:nth-child(n+2){display:none}}
+.fleet li{display:flex;align-items:center;gap:7px;color:var(--term-fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fleet li::before{content:"✓";display:inline-grid;place-items:center;width:15px;height:15px;border-radius:4px;font:700 10px var(--mono);background:color-mix(in srgb,var(--term-ok) 18%,transparent);color:var(--term-ok);flex:none}
+.tfoot{display:flex;justify-content:space-between;gap:10px;padding:9px 16px;border-top:1px solid #1f2a32;font:12px var(--mono);color:var(--term-dim);flex-wrap:wrap}
+.tfoot b{color:var(--term-ok);font-weight:500}
 .caret{display:inline-block;width:7px;height:14px;background:var(--led);vertical-align:-2px}
-@media (prefers-reduced-motion:no-preference){.caret{animation:blink 1.1s steps(1) infinite}}
-.tfoot{display:flex;justify-content:space-between;gap:10px;padding:7px 14px;border-top:1px solid #1f2a32;font:11.5px var(--mono);color:var(--term-dim);flex-wrap:wrap}
+@media (prefers-reduced-motion:no-preference){
+  .ledd{animation:blink 2.4s steps(1) infinite}
+  .caret{animation:blink 1.1s steps(1) infinite}
+  @keyframes blink{50%{opacity:.35}}
+  .js .term .a{opacity:0;animation:show .01s var(--d) forwards}
+  .js .term .cmd .t{display:inline-block;overflow:hidden;vertical-align:bottom;width:0;animation:type var(--dur,.5s) steps(var(--n)) var(--d) forwards}
+  .js .fleet li{color:var(--term-dim)}
+  .js .fleet li::before{content:"";background:#1f2a32;animation:tick .25s var(--d) forwards}
+  .js .fleet li{animation:lit .25s var(--d) forwards}
+  .js .tfoot b{opacity:0;animation:show .3s var(--d) forwards}
+  @keyframes show{to{opacity:1}}
+  @keyframes type{to{width:calc(var(--n) * 1ch)}}
+  @keyframes tick{to{content:"✓";background:color-mix(in srgb,var(--term-ok) 18%,transparent)}}
+  @keyframes lit{to{color:var(--term-fg)}}
+}
+
 /* sections */
-section{padding-block:56px;border-top:1px solid var(--line)}
-.eyebrow{font:500 13.5px var(--mono);color:var(--muted);margin:0 0 12px}
-.eyebrow b{font-weight:500;color:var(--led-ink)}
-h2{font:700 clamp(28px,4vw,40px)/1.1 var(--display);letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance;max-width:24ch}
-.intro{color:var(--muted);max-width:60ch;margin:0 0 34px}
-.ports{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+section{padding-block:72px;border-top:1px solid var(--line)}
+h2{font:750 clamp(30px,4.4vw,46px)/1.05 var(--display);letter-spacing:-.025em;margin:0 0 16px;text-wrap:balance;max-width:22ch}
+.intro{color:var(--muted);font-size:17px;max-width:60ch;margin:0 0 40px}
+
+/* situations */
+.cases{display:grid;border-top:2px solid var(--ink)}
+.case{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:16px 48px;padding:28px 0 30px;border-bottom:1px solid var(--line);align-items:start}
+@media (max-width:800px){.case{grid-template-columns:1fr}}
+.case q{font:700 clamp(22px,2.6vw,29px)/1.18 var(--display);letter-spacing:-.015em;quotes:"« " " »";text-wrap:balance}
+html[lang="en"] .case q{quotes:"“" "”"}
+.case .ans{display:grid;gap:10px}
+.case .ans p{margin:0;font-size:16px}
+.case .ans .how{font-size:13.5px;color:var(--muted);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tag{font:600 11.5px var(--body);border-radius:4px;padding:1px 7px}
+.tag.pro{color:#1A1200;background:var(--led)}
+.tag.free{color:var(--ok);border:1px solid color-mix(in srgb,var(--ok) 50%,transparent)}
+
+/* démo + captures */
+.shot{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.shot img{display:block;width:100%;height:auto;background:#1e2127}
+.shot video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#10161B}
+.shot figcaption{padding:14px 18px 16px;font-size:14.5px;color:var(--muted)}
+.shot figcaption b{color:var(--ink);font-weight:600}
+.shot figcaption a{color:inherit}
+.shots{display:grid;gap:20px}
+.trio{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+@media (max-width:860px){.trio{grid-template-columns:1fr}}
+.trio .shot figcaption{font-size:14px}
+
+/* fonctions */
+.ports{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden}
 .port{background:var(--paper);padding:22px 20px 24px;display:grid;gap:8px;align-content:start}
 .port .id{font:500 11.5px var(--mono);color:var(--muted);display:flex;align-items:center;gap:8px}
 .port .id i{width:8px;height:8px;border-radius:2px;background:var(--ok);display:inline-block}
-.port h3{margin:0;font:700 18px var(--display);letter-spacing:-.01em}
+.port .id .tag{margin-left:auto}
+.port h3{margin:0;font:700 18px/1.25 var(--display);letter-spacing:-.01em}
 .port p{margin:0;color:var(--muted);font-size:14.5px}
-.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:start}
+.freebar{margin:0 0 18px;font-size:15px;color:var(--muted);max-width:75ch}
+.freebar b{color:var(--ink);font-weight:600}
+
+/* sécurité */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
 @media (max-width:800px){.split{grid-template-columns:1fr}}
 .checks{list-style:none;margin:0;padding:0;display:grid;gap:12px}
 .checks li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15px}
@@ -117,103 +172,143 @@ h2{font:700 clamp(28px,4vw,40px)/1.1 var(--display);letter-spacing:-.02em;margin
 .fill{display:block;height:100%;background:var(--slate);border-radius:4px}
 .bar b{font:700 14px var(--mono);text-align:right}
 .note{font-size:12.5px;color:var(--muted);margin:0}
-.dl{background:var(--slate);color:var(--bg);border-radius:16px;padding:36px clamp(20px,4vw,44px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:30px;align-items:center}
-@media (max-width:800px){.dl{grid-template-columns:1fr}}
-.dl h2{color:var(--bg);margin-bottom:8px}
-.dl p{margin:0;opacity:.82}
-.dl .proof{margin-top:22px;display:grid;gap:10px;font-size:13.5px}
-.dl .proof p{opacity:.85}
-.dl .proof a{color:inherit}
-.dl .hash{font:12px/1.5 var(--mono);overflow-wrap:anywhere;opacity:.7}
-.vt i{width:9px;height:9px;border-radius:50%;background:#5DBB86;display:inline-block;margin-right:8px;vertical-align:1px}
-.dl .btn.primary{background:var(--led);border-color:var(--led);color:#1A1200}
-.dl .btn.primary:hover{filter:brightness(1.06)}
-.specs{display:grid;gap:0;font-size:14px;border-top:1px solid color-mix(in srgb,var(--bg) 25%,transparent)}
-.specs div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid color-mix(in srgb,var(--bg) 25%,transparent)}
-.specs span:first-child{opacity:.7}
-.specs span:last-child{font-family:var(--mono);text-align:right}
-.log{display:grid;gap:12px;max-width:720px}
-.rel{display:grid;grid-template-columns:90px 1fr;gap:14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
-.rel b{font:700 15px var(--mono)}
-.rel p{margin:0;color:var(--muted);font-size:14.5px}
-.port .id .pro{margin-left:auto;font:700 10px var(--mono);letter-spacing:.06em;color:#1A1200;background:var(--led);border-radius:3px;padding:1px 5px}
+
+/* tarifs */
 .plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:18px}
 .plan{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px 24px;display:flex;flex-direction:column;gap:16px}
-.plan .btn{margin-top:auto}
 .plan.pro{border:2px solid var(--led)}
 .plan h3{margin:0;font:700 20px var(--display);display:flex;align-items:center;gap:10px}
-.plan .tag{font:600 12px var(--body);color:#1A1200;background:var(--led);border-radius:4px;padding:2px 7px}
+.plan h3 .tag{font-size:12px;padding:2px 7px}
 .price{font:800 44px/1 var(--display);letter-spacing:-.02em}
 .price small{font:500 14px var(--body);color:var(--muted);letter-spacing:0;margin-left:6px}
 .plan .sub{margin:-6px 0 0;color:var(--muted);font-size:14px}
-.plan .btn{justify-content:center}
-.plan .soon{margin:-6px 0 0;font-size:13px;color:var(--muted);text-align:center}
-.fine{font-size:13px;color:var(--muted);margin:18px 0 0;max-width:70ch}
-
-/* captures */
-.shots{display:grid;gap:22px}
-.shot{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-.shot img{display:block;width:100%;height:auto;background:#1e2127}
-.shot video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#10161B}
-.shot figcaption a{color:inherit}
-.shot figcaption{padding:14px 18px 16px;font-size:14.5px;color:var(--muted)}
-.shot figcaption b{color:var(--ink);font-weight:600}
-.plan button.btn{font:600 15.5px var(--body);background:var(--slate);color:var(--bg);width:100%}
-.plan button.btn:hover{background:var(--ink)}
+.plan .btn{margin-top:auto;justify-content:center}
+.plan button.btn{font:600 15.5px var(--body);width:100%}
 .notify{border:1px dashed var(--line);border-radius:10px;padding:14px;display:grid;gap:10px;font-size:14px;color:var(--muted)}
 .notify p{margin:0}
 .mailrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
 .mailrow code{font:500 15px var(--mono);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:7px 10px;flex:1;min-width:0;overflow-wrap:anywhere}
 .mailrow button{font:600 14px var(--body);padding:8px 14px;border-radius:7px;border:1.5px solid var(--slate);background:transparent;color:var(--ink);cursor:pointer}
-.notify .soon{text-align:left;margin:0}
+.fine{font-size:13.5px;color:var(--muted);margin:18px 0 0;max-width:70ch}
+
+/* FAQ */
+.faq{display:grid;max-width:820px;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:18px 0;font:650 18px/1.3 var(--display);letter-spacing:-.005em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:400 24px/1 var(--body);color:var(--muted);flex:none;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{margin:0 0 18px;color:var(--muted);max-width:68ch}
+
+/* versions */
+.log{display:grid;gap:12px;max-width:760px}
+.rel{display:grid;grid-template-columns:90px 1fr;gap:14px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.rel b{font:700 15px var(--mono)}
+.rel p{margin:0;color:var(--muted);font-size:14.5px}
+.js .log:not(.all) > .rel:nth-of-type(n+4){display:none}
+.more{margin-top:18px;font:600 14.5px var(--body);background:none;border:1.5px solid var(--line);color:var(--ink);border-radius:8px;padding:9px 14px;cursor:pointer}
+.more:hover{border-color:var(--slate)}
+
+/* téléchargement */
+.dl{background:linear-gradient(160deg,#1B2731,#121A20);color:var(--ink);border:1px solid #2C3A45;border-radius:18px;padding:40px clamp(20px,4vw,48px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:34px;align-items:center}
+@media (max-width:800px){.dl{grid-template-columns:1fr}}
+.dl h2{color:var(--ink);margin-bottom:10px}
+.dl p{margin:0;opacity:.85}
+.dl .proof{margin-top:22px;display:grid;gap:10px;font-size:13.5px}
+.dl .proof a{color:inherit}
+.dl .hash{font:12px/1.5 var(--mono);overflow-wrap:anywhere;opacity:.7}
+.vt i{width:9px;height:9px;border-radius:50%;background:#5DBB86;display:inline-block;margin-right:8px;vertical-align:1px}
+.dl .btn.primary{background:var(--led);border-color:var(--led);color:#1A1200}
+.dl .btn.primary:hover{filter:brightness(1.06)}
+.specs{display:grid;font-size:14px;border-top:1px solid #2C3A45}
+.specs div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #2C3A45}
+.specs>div>span:first-child{opacity:.7}
+.specs>div>span:last-child{font-family:var(--mono);text-align:right}
 footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line)}
 </style>
-<style>body{margin:0}[hidden]{display:none!important}</style>
+<script>document.documentElement.className+=" js"</script>
 </head>
 <body>
-
-
-
 <div class="wrap">
   <nav>
-    <div class="brand"><span class="mark">&gt;_</span>Vty</div>
-    <div class="navlinks"><a href="#demo">Démo</a><a href="#captures">Captures</a><a href="#fonctions">Fonctions</a><a href="#securite">Sécurité</a><a href="#tarifs">Tarifs</a><a href="#versions">Versions</a><a href="#telecharger">Télécharger</a><a href="en/" hreflang="en" lang="en">English</a></div>
+    <a class="brand" href="#"><span class="mark">&gt;_</span>Vty</a>
+    <div class="navlinks"><a class="opt" href="#demo">Démo</a><a class="opt" href="#fonctions">Fonctions</a><a class="opt" href="#securite">Sécurité</a><a href="#tarifs">Tarifs</a><a class="opt" href="#faq">FAQ</a><a href="en/" hreflang="en" lang="en">English</a><a class="navdl" href="#telecharger">Télécharger</a></div>
   </nav>
 
   <div class="hero">
     <div>
-      <span class="status"><span class="ledd"></span>v<span data-ver>1.7.0</span> · Windows 10 / 11</span>
-      <h1>Le client SSH pour gérer tout ton parc réseau.</h1>
-      <p class="lead">SSH et console série pour switchs Cisco, pensé pour les équipes qui gèrent des dizaines ou des centaines d'équipements. Parc rangé par dossiers, écran partagé, macros, sauvegardes de configs, commandes en masse et audit sécu noté de A à E. Avec des garde-fous en plus contre les erreurs.</p>
+      <span class="status"><span class="ledd"></span><span>Version <span data-ver>1.7.0</span> pour Windows 10 et 11</span></span>
+      <h1>Gère 200 switchs Cisco comme s'il n'y en avait qu'un.</h1>
+      <p class="lead">Vty réunit tes <b>sessions SSH</b>, les <b>sauvegardes de configs</b>, l'<b>audit de sécurité</b> et les <b>commandes en masse</b> dans un seul outil. Fini les vingt fenêtres PuTTY et les copier-coller d'un switch à l'autre.</p>
       <div class="ctas">
-        <a class="btn primary" href="https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi">⬇ Télécharger gratuitement</a>
-        <a class="btn ghost" href="#demo">▶ Voir la démo</a>
+        <a class="btn primary" href="https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>Télécharger gratuitement</a>
+        <a class="btn ghost" href="#demo"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 4.5v11l9-5.5z"/></svg>Voir la démo</a>
       </div>
-      <p class="meta">Installeur .msi · <span data-size>16 Mo</span> · aucun mot de passe enregistré · <a href="#tarifs">Gratuit ou Pro ?</a></p>
+      <p class="meta"><span>Gratuit jusqu'à 25 équipements</span><span>Aucun mot de passe enregistré</span><span>Hors ligne</span></p>
     </div>
 
-    <div class="term" role="img" aria-label="Aperçu de Vty : sessions SSH en onglets sur plusieurs switchs">
-      <div class="tbar">
-        <span class="tab on">CORE-SW-01 <span class="crit">●</span></span><span class="tab">ACCESS-SW-12</span><span class="tab">DIST-SW-03</span><span class="tab">+</span>
+    <div class="term" role="img" aria-label="Vty envoie la création du VLAN 30 à 12 switchs en une seule saisie, et chaque switch se coche une fois configuré">
+      <div class="tbar" aria-hidden="true">
+        <span class="tab on">ACCESS-SW-11</span><span class="tab">ACCESS-SW-12</span><span class="tab">ACCESS-SW-13</span><span class="tab">+9</span><span class="mx">Multi-exec · 12</span>
       </div>
-      <div class="tbody"><span class="d">Connecté · ssh admin@10.0.0.1 · empreinte vérifiée</span>
-<span class="p">CORE-SW-01#</span> show version | include uptime
-CORE-SW-01 uptime is 214 days, 6 hours
-<span class="p">CORE-SW-01#</span> show ip int brief | include up
-Vlan10      10.0.0.1     up    up
-Te1/0/1     unassigned   up    up
-Te1/0/2     unassigned   up    up
-<span class="p">CORE-SW-01#</span><span class="caret"></span></div>
-      <div class="tfoot"><span>curve25519-sha256 · aes256-gcm</span><span>3 sessions · 20 équipements</span></div>
+      <div class="tbody" aria-hidden="true">
+        <div class="d a" style="--d:.15s">Saisie envoyée aux 12 onglets cochés</div>
+        <div class="cmd a" style="--d:.4s"><span class="p">ACCESS-SW-11#</span> <span class="t" style="--n:6;--d:.5s;--dur:.35s">conf t</span></div>
+        <div class="cmd a" style="--d:1s"><span class="p">ACCESS-SW-11(config)#</span> <span class="t" style="--n:7;--d:1.1s;--dur:.4s">vlan 30</span></div>
+        <div class="cmd a" style="--d:1.65s"><span class="p">ACCESS-SW-11(config-vlan)#</span> <span class="t" style="--n:9;--d:1.75s;--dur:.45s">name VOIP</span></div>
+        <div class="cmd a" style="--d:2.35s"><span class="p">ACCESS-SW-11(config-vlan)#</span> <span class="t" style="--n:3;--d:2.45s;--dur:.2s">end</span></div>
+        <div class="cmd a" style="--d:2.75s"><span class="p">ACCESS-SW-11#</span> <span class="caret"></span></div>
+        <ul class="fleet">
+          <li style="--d:2.9s">ACCESS-SW-11</li><li style="--d:3.0s">ACCESS-SW-12</li><li style="--d:3.1s">ACCESS-SW-13</li>
+          <li style="--d:3.2s">ACCESS-SW-14</li><li style="--d:3.3s">ACCESS-SW-15</li><li style="--d:3.4s">ACCESS-SW-16</li>
+          <li style="--d:3.5s">ACCESS-SW-21</li><li style="--d:3.6s">ACCESS-SW-22</li><li style="--d:3.7s">ACCESS-SW-23</li>
+          <li style="--d:3.8s">ACCESS-SW-24</li><li style="--d:3.9s">ACCESS-SW-25</li><li style="--d:4.0s">ACCESS-SW-26</li>
+        </ul>
+      </div>
+      <div class="tfoot" aria-hidden="true"><span>1 saisie · 12 switchs · 0 copier-coller</span><b style="--d:4.2s">12 / 12 configurés</b></div>
     </div>
   </div>
 </div>
 
+<section id="situations"><div class="wrap">
+  <h2>Tu reconnais ces journées ?</h2>
+  <p class="intro">Vty a été écrit par un ingénieur réseau, pour les moments où la console devient un problème au lieu d'un outil.</p>
+  <div class="cases">
+    <div class="case">
+      <q>Qu'est-ce qui a changé sur le switch du 2e étage depuis la semaine dernière ?</q>
+      <div class="ans">
+        <p>Vty sauvegarde les configs de tout le parc en un clic, six équipements à la fois. Une version n'est gardée que si la config a changé, et la comparaison te montre les lignes ajoutées ou retirées.</p>
+        <p class="how"><span class="tag pro">Pro</span>Sauvegardes et comparaison</p>
+      </div>
+    </div>
+    <div class="case">
+      <q>Il faut le VLAN 30 sur quarante switchs avant ce soir.</q>
+      <div class="ans">
+        <p>Coche les onglets, tape la commande une fois : elle part sur tous. Pour les gestes de tous les jours (port ToIP + PC, VLAN sur un trunk, port err-disabled), les macros vérifient les champs et montrent un aperçu avant l'envoi.</p>
+        <p class="how"><span class="tag pro">Pro</span>Multi-exec et macros</p>
+      </div>
+    </div>
+    <div class="case">
+      <q>L'auditeur passe jeudi.</q>
+      <div class="ans">
+        <p>82 contrôles inspirés du CIS, du DISA STIG et de l'ANSSI. Chaque switch reçoit une note de A à E, chaque problème arrive avec son correctif prêt à coller, et tu repars avec un rapport HTML. Ta version IOS est aussi comparée aux failles connues de Cisco.</p>
+        <p class="how"><span class="tag pro">Pro</span>Audit de sécurité</p>
+      </div>
+    </div>
+    <div class="case">
+      <q>J'ai tapé reload dans le mauvais onglet.</q>
+      <div class="ans">
+        <p>Vty intercepte les commandes dangereuses avant qu'elles partent, même abrégées (rel, wr er, sw tr al vl). Pour les plus graves, il faut taper CONFIRMER. Les équipements critiques s'affichent en rouge.</p>
+        <p class="how"><span class="tag free">Gratuit</span>Garde-fous</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
 <section id="demo"><div class="wrap">
-  <p class="eyebrow"><b>vty#</b> show demo</p>
-  <h2>Vty en 1 min 50.</h2>
-  <p class="intro">Sessions SSH, écran partagé, macros, sauvegardes, commandes en masse, audit sécu et garde-fous, filmés sur un parc fictif de 20 switchs.</p>
-  <figure class="shot demo">
+  <h2>Deux minutes pour tout voir.</h2>
+  <p class="intro">Sessions SSH, écran partagé, macros, sauvegardes, commandes en masse, audit et garde-fous, filmés sur un parc fictif de 20 switchs.</p>
+  <figure class="shot">
     <video controls playsinline preload="none" poster="video/vty-demo-poster.webp" width="3840" height="2160" aria-label="Démonstration vidéo de Vty">
       <source src="video/vty-demo-4k.mp4" type="video/mp4">
       Ton navigateur ne lit pas la vidéo : <a href="video/vty-demo-4k.mp4">télécharge-la ici</a>.
@@ -223,53 +318,56 @@ Te1/0/2     unassigned   up    up
 </div></section>
 
 <section id="captures"><div class="wrap">
-  <p class="eyebrow"><b>vty#</b> show captures</p>
-  <h2>Ce que tu vois en ouvrant Vty.</h2>
-  <p class="intro">Captures de la vraie application, sur un parc d'exemple : les noms et les adresses sont fictifs.</p>
+  <h2>Ton parc entier, sous les yeux.</h2>
+  <p class="intro">Captures de la vraie application sur un parc d'exemple. Les noms et les adresses sont fictifs.</p>
   <div class="shots">
     <figure class="shot">
-      <a href="img/vty-terminaux.webp" title="Voir en grand"><img src="img/vty-terminaux.webp" width="2000" height="976" loading="lazy" alt="Vty : arborescence de 20 switchs rangés par bâtiment, et deux terminaux côte à côte sur ACCESS-SW-12 et CORE-SW-01"></a>
-      <figcaption><b>Écran partagé.</b> Le parc rangé par dossiers à gauche, deux sessions SSH côte à côte. Les équipements critiques s'affichent en rouge.</figcaption>
+      <a href="img/vty-terminaux.webp" title="Voir en grand"><img src="img/vty-terminaux.webp" width="2000" height="1125" loading="lazy" alt="Vty : 20 switchs rangés par dossiers à gauche, et deux terminaux SSH côte à côte sur CORE-SW-01 et ACCESS-SW-12"></a>
+      <figcaption><b>Deux terminaux côte à côte.</b> Le parc rangé par dossiers à gauche, jusqu'à quatre sessions à l'écran, la sortie Cisco colorée. Le cadre rouge signale un équipement critique.</figcaption>
     </figure>
-    
+    <div class="trio">
       <figure class="shot">
-        <a href="img/vty-audit-parc.webp" title="Voir en grand"><img src="img/vty-audit-parc.webp" width="2000" height="1190" loading="lazy" alt="Audit de sécurité de 20 switchs : score moyen, constats classés par gravité avec références CIS, STIG et ANSSI"></a>
-        <figcaption><b>Audit du parc.</b> Les problèmes classés par gravité, avec le nombre d'équipements touchés.</figcaption>
+        <a href="img/vty-tableau.webp" title="Voir en grand"><img src="img/vty-tableau-zoom.webp" width="1200" height="678" loading="lazy" alt="Tableau de bord : 20 équipements joignables, 20 sauvegardés, note d'audit moyenne et alertes par switch"></a>
+        <figcaption><b>Tableau de bord.</b> Qui répond, qui n'est pas sauvegardé, qui a une mauvaise note.</figcaption>
       </figure>
       <figure class="shot">
-        <a href="img/vty-audit-notes.webp" title="Voir en grand"><img src="img/vty-audit-notes.webp" width="2000" height="893" loading="lazy" alt="Notes d'audit par équipement, de E à B, avec le score de chaque catégorie"></a>
-        <figcaption><b>Note par équipement.</b> De A à E, avec le détail par catégorie pour savoir quoi corriger en premier.</figcaption>
+        <a href="img/vty-audit-parc.webp" title="Voir en grand"><img src="img/vty-audit-parc-zoom.webp" width="1200" height="678" loading="lazy" alt="Audit de sécurité du parc : constats classés par gravité avec références CIS, STIG et ANSSI"></a>
+        <figcaption><b>Audit du parc.</b> Les problèmes classés par gravité, avec le nombre de switchs touchés.</figcaption>
       </figure>
+      <figure class="shot">
+        <a href="img/vty-audit-notes.webp" title="Voir en grand"><img src="img/vty-audit-notes-zoom.webp" width="1200" height="678" loading="lazy" alt="Notes d'audit par équipement, de A à E, avec le score de chaque catégorie"></a>
+        <figcaption><b>Note par switch.</b> De A à E, pour savoir quoi corriger en premier.</figcaption>
+      </figure>
+    </div>
   </div>
 </div></section>
 
 <section id="fonctions"><div class="wrap">
-  <p class="eyebrow"><b>vty#</b> show fonctions</p>
-  <h2>Tout ce qu'il faut pour un parc de switchs, dans une seule fenêtre.</h2>
-  <p class="intro">Gratuit : SSH (mot de passe, clé ou agent Pageant), Telnet, console série, onglets, recherche instantanée, garde-fous, journaux de session et import MobaXterm / PuTTY / CSV, jusqu'à 25 équipements. Les fonctions marquées PRO s'ajoutent avec la licence Pro.</p>
+  <h2>Tout ce que tu fais sur tes switchs, dans une seule fenêtre.</h2>
+  <p class="freebar"><b>Dans la version gratuite :</b> SSH (mot de passe, clé ou Pageant), Telnet, console série, onglets, recherche instantanée, garde-fous, journaux de session et import de tes sessions MobaXterm, PuTTY ou d'un CSV. Jusqu'à 25 équipements.</p>
   <div class="ports">
-    <div class="port"><span class="id"><i></i><span class="gi">Gi1/0/1</span><span class="pro">PRO</span></span><h3>Multi-exec</h3><p>Une commande tapée une fois, envoyée sur tous les onglets cochés.</p></div>
-    <div class="port"><span class="id"><i></i><span class="gi">Gi1/0/2</span><span class="pro">PRO</span></span><h3>Sauvegardes des configs</h3><p>6 équipements en parallèle. Une version n'est gardée que si la config a changé, avec comparaison ligne à ligne.</p></div>
-    <div class="port"><span class="id"><i></i><span class="gi">Gi1/0/3</span><span class="pro">PRO</span></span><h3>Audit sécu A → E</h3><p>82 contrôles inspirés du CIS Benchmark, du DISA STIG et de l'ANSSI, avec le correctif prêt à coller.</p></div>
-    <div class="port"><span class="id"><i></i><span class="gi">Gi1/0/4</span><span class="pro">PRO</span></span><h3>Failles connues</h3><p>Ta version IOS comparée aux avis de sécurité Cisco PSIRT, avec la première version corrigée.</p></div>
-    <div class="port"><span class="id"><i></i><span class="gi">Gi1/0/5</span><span class="pro">PRO</span></span><h3>Commandes en masse</h3><p>show en lecture seule sur tout le parc, filtre en direct et export CSV.</p></div>
-    <div class="port"><span class="id"><i></i><span class="gi">Gi1/0/6</span><span class="pro">PRO</span></span><h3>Macros</h3><p>Port ToIP + PC, VLAN sur un trunk, port err-disabled… champs vérifiés et aperçu avant envoi.</p></div>
-    <div class="port"><span class="id"><i></i><span class="gi">Gi1/0/7</span><span class="pro">PRO</span></span><h3>Fichiers SFTP / SCP</h3><p>Glisser-déposer une image IOS, MD5 vérifié par le switch après l'envoi.</p></div>
-    <div class="port"><span class="id"><i></i><span class="gi">Gi1/0/8</span><span class="pro">PRO</span></span><h3>Tableau de bord</h3><p>Équipements joignables, sauvegardes anciennes, notes d'audit, alertes : tout le parc en un écran.</p></div>
+    <div class="port"><span class="id"><i></i>Gi1/0/1<span class="tag pro">Pro</span></span><h3>Une commande, tous les switchs</h3><p>Multi-exec : tu tapes une fois, Vty l'envoie sur tous les onglets cochés.</p></div>
+    <div class="port"><span class="id"><i></i>Gi1/0/2<span class="tag pro">Pro</span></span><h3>Des configs toujours sauvegardées</h3><p>Six équipements en parallèle, une version gardée seulement quand la config change, comparaison ligne à ligne.</p></div>
+    <div class="port"><span class="id"><i></i>Gi1/0/3<span class="tag pro">Pro</span></span><h3>Un audit prêt pour l'auditeur</h3><p>82 contrôles, note de A à E, correctif prêt à coller et rapport HTML.</p></div>
+    <div class="port"><span class="id"><i></i>Gi1/0/4<span class="tag pro">Pro</span></span><h3>Les failles de ta version IOS</h3><p>Comparée aux avis de sécurité Cisco PSIRT, avec la première version corrigée.</p></div>
+    <div class="port"><span class="id"><i></i>Gi1/0/5<span class="tag pro">Pro</span></span><h3>Un « show » sur tout le parc</h3><p>Commandes en lecture seule sur des centaines de switchs, filtre en direct, export CSV.</p></div>
+    <div class="port"><span class="id"><i></i>Gi1/0/6<span class="tag pro">Pro</span></span><h3>Des macros sans faute de frappe</h3><p>Port ToIP + PC, VLAN sur un trunk, port err-disabled : champs vérifiés, aperçu avant envoi.</p></div>
+    <div class="port"><span class="id"><i></i>Gi1/0/7<span class="tag pro">Pro</span></span><h3>Une image IOS par glisser-déposer</h3><p>SFTP / SCP, avec le MD5 vérifié par le switch après l'envoi.</p></div>
+    <div class="port"><span class="id"><i></i>Gi1/0/8<span class="tag pro">Pro</span></span><h3>L'état du parc d'un coup d'œil</h3><p>Joignabilité, sauvegardes anciennes, notes d'audit et alertes sur un seul écran.</p></div>
   </div>
 </div></section>
 
 <section id="securite"><div class="wrap split">
   <div>
-    <p class="eyebrow"><b>vty#</b> show securite</p>
-    <h2>Pensé sécurité d'abord, pour ne rien laisser traîner.</h2>
+    <h2>Rien ne quitte ton poste.</h2>
+    <p class="intro" style="margin-bottom:26px">Vty tourne entièrement sur ton PC. Pas de compte, pas de cloud, pas de télémétrie.</p>
     <ul class="checks">
-      <li>Écoute uniquement en local (127.0.0.1) : inaccessible depuis le réseau.</li>
-      <li>Aucun identifiant ni mot de passe enregistré sur le disque.</li>
-      <li>Empreinte SSH vérifiée, connexion bloquée si la clé change.</li>
-      <li>Vieux algorithmes SHA-1 et CBC utilisés seulement en dernier recours, et affichés.</li>
+      <li>Aucun identifiant ni mot de passe écrit sur le disque : ils restent en mémoire le temps de la connexion.</li>
+      <li>Accessible uniquement depuis ton poste (127.0.0.1), jamais depuis le réseau.</li>
+      <li>Empreinte SSH vérifiée : la connexion est bloquée si la clé du switch change.</li>
+      <li>Vieux algorithmes SHA-1 et CBC utilisés seulement en dernier recours, et signalés.</li>
+      <li>Licence vérifiée sur le poste, sans connexion Internet.</li>
       <li>Exports CSV protégés contre l'injection de formules Excel.</li>
-      <li>Commandes dangereuses interceptées, abréviations Cisco comprises : rel, wr er, sw tr al vl.</li>
     </ul>
   </div>
   <div class="grade" aria-label="Exemple de note d'audit">
@@ -285,13 +383,13 @@ Te1/0/2     unassigned   up    up
 </div></section>
 
 <section id="tarifs"><div class="wrap">
-  <p class="eyebrow"><b>vty#</b> show tarifs</p>
   <h2>Gratuit pour démarrer. Pro quand le parc grandit.</h2>
-  <p class="intro">Une seule installation : la version gratuite devient Pro dès que tu colles ta clé de licence. La clé est vérifiée sur ton poste, sans connexion Internet.</p>
+  <p class="intro">Une seule installation : la version gratuite devient Pro dès que tu colles ta clé de licence.</p>
   <div class="plans">
     <div class="plan">
       <h3>Gratuit</h3>
       <div class="price">0 €</div>
+      <p class="sub">Sans limite de durée, sans inscription</p>
       <ul class="checks">
         <li>SSH (mot de passe, clé, Pageant), Telnet et console série</li>
         <li>Onglets, recherche instantanée et journaux de session</li>
@@ -299,10 +397,10 @@ Te1/0/2     unassigned   up    up
         <li>Garde-fous sur les commandes dangereuses</li>
         <li>Jusqu'à 25 équipements enregistrés</li>
       </ul>
-      <a class="btn ghost" href="https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi">⬇ Télécharger</a>
+      <a class="btn ghost" href="https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi">Télécharger</a>
     </div>
     <div class="plan pro">
-      <h3>Pro <span class="tag">Recommandé</span></h3>
+      <h3>Pro <span class="tag pro">Recommandé</span></h3>
       <div class="price">45 €<small>HT par utilisateur</small></div>
       <p class="sub">Licence à vie · 1 an de mises à jour inclus</p>
       <ul class="checks">
@@ -317,17 +415,28 @@ Te1/0/2     unassigned   up    up
       <div id="notify" class="notify" hidden>
         <p>Envoie un e-mail avec l'objet « Vty Pro » à :</p>
         <div class="mailrow"><code id="notify-mail">contact@getvty.com</code><button type="button" id="notify-copy">Copier</button></div>
-        <p class="soon"><a href="mailto:contact@getvty.com?subject=Vty%20Pro">Ou ouvrir ma messagerie</a>. Tu seras prévenu le jour de l'ouverture des ventes.</p>
+        <p><a href="mailto:contact@getvty.com?subject=Vty%20Pro">Ou ouvrir ma messagerie</a>. Tu seras prévenu le jour de l'ouverture des ventes.</p>
       </div>
     </div>
   </div>
   <p class="fine">Après la première année, ta version reste Pro à vie. Le renouvellement sert seulement à recevoir les nouvelles versions.</p>
 </div></section>
 
+<section id="faq"><div class="wrap">
+  <h2>Questions fréquentes</h2>
+  <div class="faq">
+    <details><summary>Avec quels équipements Vty fonctionne-t-il ?</summary><p>Le terminal fonctionne avec tout appareil joignable en SSH, Telnet ou console série. Les sauvegardes, l'audit, les macros et la recherche de failles sont faits pour Cisco IOS et IOS-XE.</p></details>
+    <details><summary>Où sont stockés mes mots de passe ?</summary><p>Nulle part. Vty te les demande à la connexion et les garde en mémoire le temps nécessaire, sans jamais les écrire sur le disque. Pour une clé SSH, seul son emplacement est enregistré ; la phrase secrète est redemandée.</p></details>
+    <details><summary>La version gratuite est-elle vraiment gratuite ?</summary><p>Oui, sans limite de durée et sans inscription. Elle est limitée à 25 équipements enregistrés ; les fonctions de gestion du parc (sauvegardes, audit, multi-exec…) demandent la licence Pro.</p></details>
+    <details><summary>Windows affiche « Windows a protégé votre ordinateur ». C'est normal ?</summary><p>Oui : l'installeur n'est pas encore signé. Clique sur « Informations complémentaires », puis « Exécuter quand même ». Tu peux vérifier le fichier avec son empreinte SHA-256 et l'analyse VirusTotal, plus bas sur cette page.</p></details>
+    <details><summary>Faut-il une connexion Internet ?</summary><p>Non. Vty fonctionne sur un réseau isolé, licence comprise. Il vérifie seulement s'il existe une nouvelle version au démarrage (désactivable), et la recherche de failles Cisco ne contacte Cisco que si tu la lances.</p></details>
+    <details><summary>Comment marche la licence Pro ?</summary><p>45 € HT par utilisateur, une seule fois. Ta version reste Pro à vie, avec un an de nouvelles versions inclus. Les ventes ouvrent bientôt : laisse ton e-mail dans la section Tarifs pour être prévenu.</p></details>
+  </div>
+</div></section>
+
 <section id="versions"><div class="wrap">
-  <p class="eyebrow"><b>vty#</b> show versions</p>
-  <h2>Historique</h2>
-  <div class="log">
+  <h2>Historique des versions</h2>
+  <div class="log" id="log">
     <!--versions-->
     <div class="rel"><b>1.7.0</b><p>Interface repensée : icônes nettes à la place des emojis, menus, fenêtres et tableaux plus lisibles, barres de défilement discrètes, petites animations. Terminaux plus fluides : affichage par la carte graphique (désactivable dans le menu langue en bas à gauche), même avec de gros « show » et 4 terminaux à l&#x27;écran. Tableau de bord, audit et commandes en masse mis à jour ligne par ligne : plus de saccades pendant les traitements, les détails ouverts restent ouverts. Barre d&#x27;outils compacte quand la fenêtre est étroite, onglets qui défilent à la molette, barre latérale réglable en largeur (glisser son bord). La date de sortie s&#x27;affiche à côté du numéro de version dans la fenêtre de mise à jour ; la vérification des failles Cisco ne se lance que si sa case est cochée.</p></div>
     <div class="rel"><b>1.6.0</b><p>Vty en anglais : l&#x27;interface suit la langue de Windows (français ou anglais), avec un choix manuel en bas à gauche (FR / EN). Messages, rapports d&#x27;audit, journaux de session et macros fournies traduits ; les dates s&#x27;affichent au format AAAA-MM-JJ en anglais. Site en anglais : getvty.com/en.</p></div>
@@ -337,15 +446,16 @@ Te1/0/2     unassigned   up    up
     <div class="rel"><b>1.4.0</b><p>Version gratuite (SSH, console série, garde-fous, 25 équipements) et version Pro (tout le reste, équipements illimités). Licence Pro à vie, vérifiée sur le poste sans connexion Internet, avec 1 an de mises à jour.</p></div>
     <div class="rel"><b>1.3.2</b><p>Première version publique. Audit sécu avec risques acceptés et date de revue, rapport HTML, politique de sécurité personnalisable.</p></div>
   </div>
+  <button type="button" class="more" id="more" hidden aria-controls="log" aria-expanded="false">Voir toutes les versions</button>
 </div></section>
 
 <section id="telecharger"><div class="wrap">
   <div class="dl">
     <div>
-      <h2>Télécharger Vty</h2>
-      <p>Installe, ouvre, importe ton CSV d'équipements, et c'est parti. La même installation sert pour la version gratuite et la version Pro : il suffit de coller ta clé de licence.</p>
+      <h2>Prêt en deux minutes.</h2>
+      <p>Installe, importe tes sessions PuTTY, MobaXterm ou un CSV d'équipements, et connecte-toi. La même installation sert pour la version gratuite et la version Pro.</p>
       <div class="ctas" style="margin-top:22px">
-        <a class="btn primary" href="https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi">⬇ Vty <span data-ver>1.7.0</span> pour Windows</a>
+        <a class="btn primary" href="https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg><span>Vty <span data-ver>1.7.0</span> pour Windows</span></a>
       </div>
       <div class="proof">
         <p class="vt"><i></i><a href="https://www.virustotal.com/gui/file/1f585903a0921ccdcb13b777a669f348ebc398e4e8c37f72e1084e6d5dd88142" rel="noopener">Analyse VirusTotal de l'installeur</a><span data-vt-score></span></p>
@@ -365,18 +475,25 @@ Te1/0/2     unassigned   up    up
 
 <div class="wrap"><footer><span>Vty · <a href="mailto:contact@getvty.com">contact@getvty.com</a> · <a href="mentions-legales.html">Mentions légales</a></span><span>Fait pour les admins réseau qui préfèrent ne pas couper un site un vendredi.</span></footer></div>
 
-
 <script>
 (function(){
   var b=document.getElementById("notify-btn"), box=document.getElementById("notify"), c=document.getElementById("notify-copy");
-  if(!b) return;
-  b.addEventListener("click",function(){ box.hidden=!box.hidden; b.setAttribute("aria-expanded", String(!box.hidden)); });
-  c.addEventListener("click",function(){
-    var t="contact@getvty.com", done=function(){ c.textContent="Copié ✓"; setTimeout(function(){ c.textContent="Copier"; },2000); };
-    if(navigator.clipboard){ navigator.clipboard.writeText(t).then(done,function(){ fallback(); }); } else fallback();
-    function fallback(){ var r=document.createRange(); r.selectNodeContents(document.getElementById("notify-mail")); var sel=getSelection(); sel.removeAllRanges(); sel.addRange(r); try{document.execCommand("copy"); done();}catch(e){} }
-  });
+  if(b){
+    b.addEventListener("click",function(){ box.hidden=!box.hidden; b.setAttribute("aria-expanded", String(!box.hidden)); });
+    c.addEventListener("click",function(){
+      var t="contact@getvty.com", done=function(){ c.textContent="Copié ✓"; setTimeout(function(){ c.textContent="Copier"; },2000); };
+      if(navigator.clipboard){ navigator.clipboard.writeText(t).then(done,fallback); } else fallback();
+      function fallback(){ var r=document.createRange(); r.selectNodeContents(document.getElementById("notify-mail")); var sel=getSelection(); sel.removeAllRanges(); sel.addRange(r); try{document.execCommand("copy"); done();}catch(e){} }
+    });
+  }
+  var log=document.getElementById("log"), more=document.getElementById("more");
+  var n=log.querySelectorAll(".rel").length;
+  if(n>3){
+    more.hidden=false; more.textContent="Voir les %d versions".replace("%d",n);
+    more.addEventListener("click",function(){ var all=log.classList.toggle("all"); more.setAttribute("aria-expanded",String(all)); more.textContent=all?"Voir moins":"Voir les %d versions".replace("%d",n); });
+  }
 })();
 </script>
+
 </body>
 </html>

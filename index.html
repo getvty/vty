@@ -182,7 +182,7 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
 
   <div class="hero">
     <div>
-      <span class="status"><span class="ledd"></span>v<span data-ver>1.6.0</span> · Windows 10 / 11</span>
+      <span class="status"><span class="ledd"></span>v<span data-ver>1.7.0</span> · Windows 10 / 11</span>
       <h1>Le client SSH pour gérer tout ton parc réseau.</h1>
       <p class="lead">SSH et console série pour switchs Cisco, pensé pour les équipes qui gèrent des dizaines ou des centaines d'équipements. Parc rangé par dossiers, écran partagé, macros, sauvegardes de configs, commandes en masse et audit sécu noté de A à E. Avec des garde-fous en plus contre les erreurs.</p>
       <div class="ctas">
@@ -329,6 +329,7 @@ Te1/0/2     unassigned   up    up
   <h2>Historique</h2>
   <div class="log">
     <!--versions-->
+    <div class="rel"><b>1.7.0</b><p>Interface repensée : icônes nettes à la place des emojis, menus, fenêtres et tableaux plus lisibles, barres de défilement discrètes, petites animations. Terminaux plus fluides : affichage par la carte graphique (désactivable dans le menu langue en bas à gauche), même avec de gros « show » et 4 terminaux à l&#x27;écran. Tableau de bord, audit et commandes en masse mis à jour ligne par ligne : plus de saccades pendant les traitements, les détails ouverts restent ouverts. Barre d&#x27;outils compacte quand la fenêtre est étroite, onglets qui défilent à la molette, barre latérale réglable en largeur (glisser son bord). La date de sortie s&#x27;affiche à côté du numéro de version dans la fenêtre de mise à jour ; la vérification des failles Cisco ne se lance que si sa case est cochée.</p></div>
     <div class="rel"><b>1.6.0</b><p>Vty en anglais : l&#x27;interface suit la langue de Windows (français ou anglais), avec un choix manuel en bas à gauche (FR / EN). Messages, rapports d&#x27;audit, journaux de session et macros fournies traduits ; les dates s&#x27;affichent au format AAAA-MM-JJ en anglais. Site en anglais : getvty.com/en.</p></div>
     <div class="rel"><b>1.5.0</b><p>Connexion par clé SSH (OpenSSH, PEM, PKCS#8) ou par agent (Pageant, agent OpenSSH de Windows) : seul l&#x27;emplacement de la clé est enregistré, la phrase secrète est demandée à chaque connexion. Telnet pour les vieux équipements, avec un bandeau « non chiffré » bien visible. Journaux de session automatiques dans des fichiers texte (désactivés par défaut, réglables par équipement). Import des sessions MobaXterm et PuTTY (dossiers conservés, identifiants jamais importés). Mauvais mot de passe : Vty redemande au lieu de couper.</p></div>
     <div class="rel"><b>1.4.2</b><p>Exemples et textes de l&#x27;audit rendus génériques (supervision SNMP, collecteur syslog / SOC), VLAN par défaut des macros : 20 et 30. Site : aperçu de partage et icône.</p></div>
@@ -344,16 +345,16 @@ Te1/0/2     unassigned   up    up
       <h2>Télécharger Vty</h2>
       <p>Installe, ouvre, importe ton CSV d'équipements, et c'est parti. La même installation sert pour la version gratuite et la version Pro : il suffit de coller ta clé de licence.</p>
       <div class="ctas" style="margin-top:22px">
-        <a class="btn primary" href="https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi">⬇ Vty <span data-ver>1.6.0</span> pour Windows</a>
+        <a class="btn primary" href="https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi">⬇ Vty <span data-ver>1.7.0</span> pour Windows</a>
       </div>
       <div class="proof">
-        <p class="vt"><i></i><a href="https://www.virustotal.com/gui/file/6033f64c41c7560985d1726a36939c7868807d82c77dca545403f49b4ca5f625" rel="noopener">Analyse VirusTotal de l'installeur</a><span data-vt-score></span></p>
+        <p class="vt"><i></i><a href="https://www.virustotal.com/gui/file/1f585903a0921ccdcb13b777a669f348ebc398e4e8c37f72e1084e6d5dd88142" rel="noopener">Analyse VirusTotal de l'installeur</a><span data-vt-score></span></p>
         <p>Si Windows affiche « Windows a protégé votre ordinateur » : Informations complémentaires, puis Exécuter quand même. L'installeur n'est pas encore signé.</p>
-        <p class="hash">SHA-256 : <span data-sha>6033f64c41c7560985d1726a36939c7868807d82c77dca545403f49b4ca5f625</span></p>
+        <p class="hash">SHA-256 : <span data-sha>1f585903a0921ccdcb13b777a669f348ebc398e4e8c37f72e1084e6d5dd88142</span></p>
       </div>
     </div>
     <div class="specs">
-      <div><span>Version</span><span data-ver>1.6.0</span></div>
+      <div><span>Version</span><span data-ver>1.7.0</span></div>
       <div><span>Système</span><span>Windows 10 / 11 x64</span></div>
       <div><span>Format</span><span>.msi · <span data-size>16 Mo</span></span></div>
       <div><span>Équipements</span><span>Cisco IOS / IOS-XE et tout appareil SSH</span></div>

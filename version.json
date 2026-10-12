@@ -1,15 +1,19 @@
 {
-  "version": "1.6.0",
-  "date": "2026-10-11",
+  "version": "1.7.0",
+  "date": "2026-10-12",
   "notes": [
-    "Vty en anglais : l'interface suit la langue de Windows (français ou anglais), avec un choix manuel en bas à gauche (FR / EN).",
-    "Messages, rapports d'audit, journaux de session et macros fournies traduits ; les dates s'affichent au format AAAA-MM-JJ en anglais.",
-    "Site en anglais : getvty.com/en."
+    "Interface repensée : icônes nettes à la place des emojis, menus, fenêtres et tableaux plus lisibles, barres de défilement discrètes, petites animations.",
+    "Terminaux plus fluides : affichage par la carte graphique (désactivable dans le menu langue en bas à gauche), même avec de gros « show » et 4 terminaux à l'écran.",
+    "Tableau de bord, audit et commandes en masse mis à jour ligne par ligne : plus de saccades pendant les traitements, les détails ouverts restent ouverts.",
+    "Barre d'outils compacte quand la fenêtre est étroite, onglets qui défilent à la molette, barre latérale réglable en largeur (glisser son bord).",
+    "La date de sortie s'affiche à côté du numéro de version dans la fenêtre de mise à jour ; la vérification des failles Cisco ne se lance que si sa case est cochée."
   ],
   "notes_en": [
-    "Vty in English: the interface follows the Windows language (French or English), with a manual switch at the bottom left (FR / EN).",
-    "Messages, audit reports, session logs and built-in macros translated; dates are shown as YYYY-MM-DD in English.",
-    "English website: getvty.com/en."
+    "Redesigned interface: crisp icons instead of emojis, clearer menus, dialogs and tables, subtle scrollbars, light animations.",
+    "Smoother terminals: GPU rendering (can be turned off in the language menu at the bottom left), even with large “show” outputs and 4 terminals on screen.",
+    "Dashboard, audit and bulk commands update row by row: no more stutter while jobs run, and opened details stay open.",
+    "Compact toolbar on narrow windows, tabs scroll with the mouse wheel, resizable sidebar (drag its edge).",
+    "The release date is shown next to the version number in the update dialog; the Cisco advisory check only runs when its box is ticked."
   ],
   "page": "https://getvty.com/#telecharger",
   "page_en": "https://getvty.com/en/#download"

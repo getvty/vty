@@ -1,19 +1,13 @@
 {
-  "version": "1.7.0",
-  "date": "2026-10-12",
+  "version": "1.7.1",
+  "date": "2026-10-13",
   "notes": [
-    "Interface repensée : icônes nettes à la place des emojis, menus, fenêtres et tableaux plus lisibles, barres de défilement discrètes, petites animations.",
-    "Terminaux plus fluides : affichage par la carte graphique (désactivable dans le menu langue en bas à gauche), même avec de gros « show » et 4 terminaux à l'écran.",
-    "Tableau de bord, audit et commandes en masse mis à jour ligne par ligne : plus de saccades pendant les traitements, les détails ouverts restent ouverts.",
-    "Barre d'outils compacte quand la fenêtre est étroite, onglets qui défilent à la molette, barre latérale réglable en largeur (glisser son bord).",
-    "La date de sortie s'affiche à côté du numéro de version dans la fenêtre de mise à jour ; la vérification des failles Cisco ne se lance que si sa case est cochée."
+    "Recherche d'équipements bien visible : quand un filtre est actif, la barre de recherche et le compteur passent en orange, et Échap l'efface pour tout réafficher.",
+    "Icône de Vty corrigée dans la barre des tâches, le menu Démarrer et sur le Bureau après une mise à jour (désépingler puis réépingler Vty une fois si l'icône est encore générique)."
   ],
   "notes_en": [
-    "Redesigned interface: crisp icons instead of emojis, clearer menus, dialogs and tables, subtle scrollbars, light animations.",
-    "Smoother terminals: GPU rendering (can be turned off in the language menu at the bottom left), even with large “show” outputs and 4 terminals on screen.",
-    "Dashboard, audit and bulk commands update row by row: no more stutter while jobs run, and opened details stay open.",
-    "Compact toolbar on narrow windows, tabs scroll with the mouse wheel, resizable sidebar (drag its edge).",
-    "The release date is shown next to the version number in the update dialog; the Cisco advisory check only runs when its box is ticked."
+    "Device search is clearly visible: when a filter is active, the search box and the counter turn orange, and Esc clears it to show everything again.",
+    "Vty icon fixed in the taskbar, Start menu and desktop after an update (unpin and pin Vty again once if the icon is still generic)."
   ],
   "page": "https://getvty.com/#telecharger",
   "page_en": "https://getvty.com/en/#download"

@@ -1,13 +1,11 @@
 {
-  "version": "1.7.1",
+  "version": "1.7.2",
   "date": "2026-10-13",
   "notes": [
-    "Recherche d'équipements bien visible : quand un filtre est actif, la barre de recherche et le compteur passent en orange, et Échap l'efface pour tout réafficher.",
-    "Icône de Vty corrigée dans la barre des tâches, le menu Démarrer et sur le Bureau après une mise à jour (désépingler puis réépingler Vty une fois si l'icône est encore générique)."
+    "Nouveau logo : l'icône de Vty est maintenant la même partout (barre des tâches, barre de titre, menu Démarrer, Bureau et site), en ambre comme dans l'application."
   ],
   "notes_en": [
-    "Device search is clearly visible: when a filter is active, the search box and the counter turn orange, and Esc clears it to show everything again.",
-    "Vty icon fixed in the taskbar, Start menu and desktop after an update (unpin and pin Vty again once if the icon is still generic)."
+    "New logo: the Vty icon is now the same everywhere (taskbar, title bar, Start menu, desktop and website), in amber like inside the app."
   ],
   "page": "https://getvty.com/#telecharger",
   "page_en": "https://getvty.com/en/#download"

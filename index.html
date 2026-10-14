@@ -364,6 +364,9 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
     <p class="intro" style="margin-bottom:26px">Vty tourne entièrement sur ton PC. Pas de compte, pas de cloud, pas de télémétrie.</p>
     <ul class="checks">
       <li>Aucun identifiant ni mot de passe écrit sur le disque : ils restent en mémoire le temps de la connexion.</li>
+      <li>Sauvegardes de configs chiffrées sur ton poste (AES-256, clé protégée par Windows), avec un mot de passe maître en option et le verrouillage automatique.</li>
+      <li>Secrets masqués dans les journaux de session, les copies et les exports : communautés SNMP, mots de passe, clés.</li>
+      <li>Journal des actions : multi-exec, macros, commandes en masse, commandes dangereuses confirmées, avec qui, quoi et quand.</li>
       <li>Accessible uniquement depuis ton poste (127.0.0.1), jamais depuis le réseau.</li>
       <li>Empreinte SSH vérifiée : la connexion est bloquée si la clé du switch change.</li>
       <li>Vieux algorithmes SHA-1 et CBC utilisés seulement en dernier recours, et signalés.</li>
@@ -427,7 +430,7 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
   <h2>Questions fréquentes</h2>
   <div class="faq">
     <details><summary>Avec quels équipements Vty fonctionne-t-il ?</summary><p>Le terminal fonctionne avec tout appareil joignable en SSH, Telnet ou console série. Les sauvegardes, l'audit, les macros et la recherche de failles sont faits pour Cisco IOS et IOS-XE.</p></details>
-    <details><summary>Où sont stockés mes mots de passe ?</summary><p>Nulle part. Vty te les demande à la connexion et les garde en mémoire le temps nécessaire, sans jamais les écrire sur le disque. Pour une clé SSH, seul son emplacement est enregistré ; la phrase secrète est redemandée.</p></details>
+    <details><summary>Où sont stockés mes mots de passe ?</summary><p>Nulle part. Vty te les demande à la connexion et les garde en mémoire le temps nécessaire, sans jamais les écrire sur le disque. Pour une clé SSH, seul son emplacement est enregistré ; la phrase secrète est redemandée. Les configurations sauvegardées, qui contiennent les secrets des équipements, sont chiffrées sur ton poste, et tu peux ajouter un mot de passe maître.</p></details>
     <details><summary>La version gratuite est-elle vraiment gratuite ?</summary><p>Oui, sans limite de durée et sans inscription. Elle est limitée à 25 équipements enregistrés ; les fonctions de gestion du parc (sauvegardes, audit, multi-exec…) demandent la licence Pro.</p></details>
     <details><summary>Windows affiche « Windows a protégé votre ordinateur ». C'est normal ?</summary><p>Oui : l'installeur n'est pas encore signé. Clique sur « Informations complémentaires », puis « Exécuter quand même ». Tu peux vérifier le fichier avec son empreinte SHA-256 et l'analyse VirusTotal, plus bas sur cette page.</p></details>
     <details><summary>Faut-il une connexion Internet ?</summary><p>Non. Vty fonctionne sur un réseau isolé, licence comprise. Il vérifie seulement s'il existe une nouvelle version au démarrage (désactivable), et la recherche de failles Cisco ne contacte Cisco que si tu la lances.</p></details>

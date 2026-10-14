@@ -365,6 +365,9 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
     <p class="intro" style="margin-bottom:26px">Vty runs entirely on your PC. No account, no cloud, no telemetry.</p>
     <ul class="checks">
       <li>No username or password written to disk: they stay in memory for the duration of the connection.</li>
+      <li>Config backups encrypted on your computer (AES-256, key protected by Windows), with an optional master password and automatic lock.</li>
+      <li>Secrets hidden in session logs, copies and exports: SNMP communities, passwords, keys.</li>
+      <li>Activity log: multi-exec, macros, bulk commands, confirmed dangerous commands, with who, what and when.</li>
       <li>Only reachable from your own computer (127.0.0.1), never from the network.</li>
       <li>SSH fingerprint checked: the connection is blocked if the switch's key changes.</li>
       <li>Old SHA-1 and CBC algorithms only used as a last resort, and flagged.</li>
@@ -428,7 +431,7 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
   <h2>Frequently asked questions</h2>
   <div class="faq">
     <details><summary>Which devices does Vty work with?</summary><p>The terminal works with any device reachable over SSH, Telnet or a serial console. Backups, the audit, macros and the vulnerability check are built for Cisco IOS and IOS-XE.</p></details>
-    <details><summary>Where are my passwords stored?</summary><p>Nowhere. Vty asks for them when you connect and keeps them in memory only as long as needed, never on disk. For an SSH key, only its location is saved; the passphrase is asked again.</p></details>
+    <details><summary>Where are my passwords stored?</summary><p>Nowhere. Vty asks for them when you connect and keeps them in memory only as long as needed, never on disk. For an SSH key, only its location is saved; the passphrase is asked again. Saved configurations, which contain your devices' secrets, are encrypted on your computer, and you can add a master password.</p></details>
     <details><summary>Is the free version really free?</summary><p>Yes, with no time limit and no sign-up. It's limited to 25 saved devices; the fleet management features (backups, audit, multi-exec…) need a Pro license.</p></details>
     <details><summary>Windows says “Windows protected your PC”. Is that normal?</summary><p>Yes: the installer isn't signed yet. Click “More info”, then “Run anyway”. You can check the file with its SHA-256 fingerprint and the VirusTotal scan further down this page.</p></details>
     <details><summary>Do I need an Internet connection?</summary><p>No. Vty works on an isolated network, license included. It only checks for a new version at startup (you can turn that off), and the Cisco vulnerability check only contacts Cisco when you run it.</p></details>

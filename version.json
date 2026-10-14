@@ -1,11 +1,19 @@
 {
-  "version": "1.7.2",
-  "date": "2026-10-13",
+  "version": "1.8.0",
+  "date": "2026-10-14",
   "notes": [
-    "Nouveau logo : l'icône de Vty est maintenant la même partout (barre des tâches, barre de titre, menu Démarrer, Bureau et site), en ambre comme dans l'application."
+    "Sauvegardes de configuration chiffrées sur le poste (AES-256), avec une clé protégée par ton compte Windows : un autre compte Windows ou un disque volé ne peut plus les lire. Les anciennes sauvegardes sont chiffrées automatiquement au premier démarrage.",
+    "Mot de passe maître en option (menu langue en bas à gauche, puis Sécurité) : Vty le demande au démarrage, et même un administrateur du PC ne peut plus lire les sauvegardes sans lui. Verrouillage automatique après 5 à 60 minutes d'inactivité.",
+    "Secrets masqués par défaut dans les journaux de session, les copies de configuration et les exports des commandes en masse (mots de passe, communautés SNMP, clés RADIUS / TACACS / SNMPv3…). Une copie avec les secrets reste possible, après confirmation.",
+    "Journal des actions : multi-exec, macros, commandes dangereuses confirmées, commandes en masse, sauvegardes, audits et fichiers, avec la date, l'utilisateur et les équipements. Export CSV.",
+    "Conservation des sauvegardes réglable : nombre de versions et durée par équipement."
   ],
   "notes_en": [
-    "New logo: the Vty icon is now the same everywhere (taskbar, title bar, Start menu, desktop and website), in amber like inside the app."
+    "Configuration backups encrypted on your computer (AES-256), with a key protected by your Windows account: another Windows account or a stolen disk can no longer read them. Existing backups are encrypted automatically at first startup.",
+    "Optional master password (language menu at the bottom left, then Security): Vty asks for it at startup, and even an administrator of the PC can no longer read the backups without it. Automatic lock after 5 to 60 minutes of inactivity.",
+    "Secrets hidden by default in session logs, configuration copies and bulk command exports (passwords, SNMP communities, RADIUS / TACACS / SNMPv3 keys…). Copying with secrets is still possible after confirmation.",
+    "Activity log: multi-exec, macros, confirmed dangerous commands, bulk commands, backups, audits and files, with date, user and devices. CSV export.",
+    "Adjustable backup retention: number of versions and duration per device."
   ],
   "page": "https://getvty.com/#telecharger",
   "page_en": "https://getvty.com/en/#download"

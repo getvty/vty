@@ -6,9 +6,9 @@ SSH client and serial console for Cisco switches, built for teams that manage hu
 
 ## Download
 
-[⬇ Vty 1.7.2 for Windows](https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi) · Windows 10 / 11 x64 · free, Pro €45 excl. VAT
+[⬇ Vty 1.8.0 for Windows](https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi) · Windows 10 / 11 x64 · free, Pro €45 excl. VAT
 
-SHA-256: `0b4eddb799e32359b9b919118147fa04dca381fe0c4762cff9c0db91671cce3f`
+SHA-256: `aa99f05de8c52acab511c1ace427cb16c653768bf540a37c6325ed21cca0281c`
 
 If Windows shows “Windows protected your PC”: **More info → Run anyway** (the installer isn't signed yet).
 
@@ -37,9 +37,9 @@ Client SSH et console série pour switchs Cisco, pensé pour les équipes qui g�
 
 ## Télécharger
 
-[⬇ Vty 1.7.2 pour Windows](https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi) · Windows 10 / 11 x64 · gratuit, Pro à 45 € HT
+[⬇ Vty 1.8.0 pour Windows](https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi) · Windows 10 / 11 x64 · gratuit, Pro à 45 € HT
 
-SHA-256 : `0b4eddb799e32359b9b919118147fa04dca381fe0c4762cff9c0db91671cce3f`
+SHA-256 : `aa99f05de8c52acab511c1ace427cb16c653768bf540a37c6325ed21cca0281c`
 
 Si Windows affiche « Windows a protégé votre ordinateur » : **Informations complémentaires → Exécuter quand même** (l'installeur n'est pas encore signé).
 

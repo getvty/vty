@@ -1,17 +1,31 @@
 {
-  "version": "1.8.1",
-  "date": "2026-10-14",
+  "version": "1.9.0",
+  "date": "2026-10-26",
   "notes": [
-    "Mot de passe maître plus résistant aux essais en série (scrypt, 128 Mo par essai) ; les coffres existants sont mis à niveau tout seuls au prochain déverrouillage.",
-    "Chiffrement des anciennes sauvegardes plus sûr : un arrêt brutal, un disque plein ou un fichier illisible ne peuvent plus abîmer une sauvegarde, et la migration reprend au démarrage suivant.",
-    "Masquage des secrets étendu : NX-OS, HSRP / VRRP / NHRP, IKEv2 (clés locales et distantes), clé maître « key config-key », SNMPv3 NX-OS. Moins de faux positifs (descriptions, bannières, numéros de clé).",
-    "Nouveau document SECURITE.md : comment Vty protège tes données, et ses limites."
+    "Clés SSH : Vty génère tes clés (Ed25519, RSA 3072 ou 4096) avec ou sans phrase secrète, les range dans l'onglet « Mes clés » et pose les bons droits Windows pour OpenSSH.",
+    "Scan de ports TCP (Pro) : listes de ports prêtes ou personnalisées, filtres, export CSV. Réservé aux réseaux que tu es autorisé à tester.",
+    "Découverte réseau (Pro) : ping et ports 22 / 23 / 80 / 443 sur une plage ou un CIDR, puis ajout des équipements trouvés à tes sessions en un clic.",
+    "Ouverture depuis GNS3 et liens ssh:// / telnet:// (syntaxe PuTTY comprise). Si une console Telnet est ouverte en SSH par erreur, Vty propose de la rouvrir en Telnet.",
+    "Telnet : « reload » et « write erase » fonctionnent sur les consoles GNS3 (la touche Entrée annulait la confirmation).",
+    "Un seul écran « Configurations » : configuration actuelle, historique, comparaison et recherche. Secrets masqués par défaut, affichables 60 secondes.",
+    "Bloc « Connexion » identique sur les écrans Sauvegarder, Commandes, Localiser et Carte. Réglages de la carte en 3 étapes, avec une aide sur les notions utiles.",
+    "Tableau de bord plus juste : date de la dernière sauvegarde réussie, équipement injoignable distingué d'un équipement jamais testé, Telnet exclu des compteurs, filtres cliquables.",
+    "Renommer une session ou changer son adresse IP garde son historique de configurations ; un historique orphelin peut être rattaché à une session (liste avec recherche).",
+    "Audit : plus de note tant qu'aucune configuration n'a été analysée. Commandes en masse : une réponse vide n'est plus confondue avec une absence de réponse, et « | redirect » / « | tee » sont refusés.",
+    "Formulaire de session vérifié avant l'enregistrement, Localiser plus fiable, masquage étendu (HSRP, adresses avec identifiants)."
   ],
   "notes_en": [
-    "Master password more resistant to guessing (scrypt, 128 MB per attempt); existing vaults are upgraded automatically at the next unlock.",
-    "Safer encryption of old backups: a crash, a full disk or an unreadable file can no longer damage a backup, and the migration resumes at the next startup.",
-    "Wider secret masking: NX-OS, HSRP / VRRP / NHRP, IKEv2 (local and remote keys), \"key config-key\" master key, NX-OS SNMPv3. Fewer false positives (descriptions, banners, key numbers).",
-    "New SECURITE.md document: how Vty protects your data, and its limits."
+    "SSH keys: Vty generates your keys (Ed25519, RSA 3072 or 4096) with or without a passphrase, keeps them in the “My keys” tab and sets the right Windows permissions for OpenSSH.",
+    "TCP port scan (Pro): ready-made or custom port lists, filters, CSV export. Only for networks you are allowed to test.",
+    "Network discovery (Pro): ping and ports 22 / 23 / 80 / 443 on a range or a CIDR, then add the devices found to your sessions in one click.",
+    "Open from GNS3 and ssh:// / telnet:// links (PuTTY syntax understood). If a Telnet console is opened over SSH by mistake, Vty offers to reopen it in Telnet.",
+    "Telnet: “reload” and “write erase” now work on GNS3 consoles (the Enter key was cancelling the confirmation).",
+    "A single “Configurations” screen: current configuration, history, comparison and search. Secrets hidden by default, revealable for 60 seconds.",
+    "Identical “Connection” block on the Backup, Commands, Locate and Map screens. Map settings in 3 steps, with help on the key notions.",
+    "More accurate dashboard: date of the last successful backup, unreachable device told apart from a never-tested one, Telnet excluded from the counters, clickable filters.",
+    "Renaming a session or changing its IP address keeps its configuration history; an orphan history can be attached to a session (list with search).",
+    "Audit: no grade until a configuration has been analysed. Bulk commands: an empty reply is no longer confused with no reply, and “| redirect” / “| tee” are refused.",
+    "Session form checked before saving, more reliable Locate, extended masking (HSRP, addresses with credentials)."
   ],
   "page": "https://getvty.com/#telecharger",
   "page_en": "https://getvty.com/en/#download"

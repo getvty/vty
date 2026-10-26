@@ -239,7 +239,7 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
 
   <div class="hero">
     <div>
-      <span class="status"><span class="ledd"></span><span>Version <span data-ver>1.8.1</span> for Windows 10 and 11</span></span>
+      <span class="status"><span class="ledd"></span><span>Version <span data-ver>1.9.0</span> for Windows 10 and 11</span></span>
       <h1>Run 200 Cisco switches like they were one.</h1>
       <p class="lead">Vty brings your <b>SSH sessions</b>, <b>config backups</b>, <b>security audits</b> and <b>bulk commands</b> into one app. No more twenty PuTTY windows and copy-pasting from one switch to the next.</p>
       <div class="ctas">
@@ -443,6 +443,7 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
   <h2>Release history</h2>
   <div class="log" id="log">
     <!--versions-->
+    <div class="rel"><b>1.9.0</b><p>SSH keys: Vty generates your keys (Ed25519, RSA 3072 or 4096) with or without a passphrase, keeps them in the “My keys” tab and sets the right Windows permissions for OpenSSH. TCP port scan (Pro): ready-made or custom port lists, filters, CSV export. Only for networks you are allowed to test. Network discovery (Pro): ping and ports 22 / 23 / 80 / 443 on a range or a CIDR, then add the devices found to your sessions in one click. Open from GNS3 and ssh:// / telnet:// links (PuTTY syntax understood). If a Telnet console is opened over SSH by mistake, Vty offers to reopen it in Telnet. Telnet: “reload” and “write erase” now work on GNS3 consoles (the Enter key was cancelling the confirmation). A single “Configurations” screen: current configuration, history, comparison and search. Secrets hidden by default, revealable for 60 seconds. Identical “Connection” block on the Backup, Commands, Locate and Map screens. Map settings in 3 steps, with help on the key notions. More accurate dashboard: date of the last successful backup, unreachable device told apart from a never-tested one, Telnet excluded from the counters, clickable filters. Renaming a session or changing its IP address keeps its configuration history; an orphan history can be attached to a session (list with search). Audit: no grade until a configuration has been analysed. Bulk commands: an empty reply is no longer confused with no reply, and “| redirect” / “| tee” are refused. Session form checked before saving, more reliable Locate, extended masking (HSRP, addresses with credentials).</p></div>
     <div class="rel"><b>1.8.1</b><p>Master password more resistant to guessing (scrypt, 128 MB per attempt); existing vaults are upgraded automatically at the next unlock. Safer encryption of old backups: a crash, a full disk or an unreadable file can no longer damage a backup, and the migration resumes at the next startup. Wider secret masking: NX-OS, HSRP / VRRP / NHRP, IKEv2 (local and remote keys), &quot;key config-key&quot; master key, NX-OS SNMPv3. Fewer false positives (descriptions, banners, key numbers). New SECURITE.md document: how Vty protects your data, and its limits.</p></div>
     <div class="rel"><b>1.8.0</b><p>Configuration backups encrypted on your computer (AES-256), with a key protected by your Windows account: another Windows account or a stolen disk can no longer read them. Existing backups are encrypted automatically at first startup. Optional master password (language menu at the bottom left, then Security): Vty asks for it at startup, and even an administrator of the PC can no longer read the backups without it. Automatic lock after 5 to 60 minutes of inactivity. Secrets hidden by default in session logs, configuration copies and bulk command exports (passwords, SNMP communities, RADIUS / TACACS / SNMPv3 keys…). Copying with secrets is still possible after confirmation. Activity log: multi-exec, macros, confirmed dangerous commands, bulk commands, backups, audits and files, with date, user and devices. CSV export. Adjustable backup retention: number of versions and duration per device.</p></div>
     <div class="rel"><b>1.7.2</b><p>New logo: the Vty icon is now the same everywhere (taskbar, title bar, Start menu, desktop and website), in amber like inside the app.</p></div>
@@ -464,16 +465,16 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
       <h2>Up and running in two minutes.</h2>
       <p>Install, import your PuTTY or MobaXterm sessions or a device CSV, and connect. The same install covers the free and the Pro version.</p>
       <div class="ctas" style="margin-top:22px">
-        <a class="btn primary" href="https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi" data-goatcounter-click="telechargement-bas-en" data-goatcounter-title="Download · bottom of page (EN)"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg><span>Vty <span data-ver>1.8.1</span> for Windows</span></a>
+        <a class="btn primary" href="https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi" data-goatcounter-click="telechargement-bas-en" data-goatcounter-title="Download · bottom of page (EN)"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg><span>Vty <span data-ver>1.9.0</span> for Windows</span></a>
       </div>
       <div class="proof">
-        <p class="vt"><i></i><a href="https://www.virustotal.com/gui/file/c875040ace5ed531a12486d446ce78315b894c38cabf49abf82ffcf6cd433e06" rel="noopener">VirusTotal scan of the installer</a><span data-vt-score></span></p>
+        <p class="vt"><i></i><a href="https://www.virustotal.com/gui/file/55d42d4c58b952f1dcc4af0aca3d95029ab198fffa0d97604cf2db342dfe4d60" rel="noopener">VirusTotal scan of the installer</a><span data-vt-score></span></p>
         <p>If Windows shows “Windows protected your PC”: click More info, then Run anyway. The installer isn't signed yet.</p>
-        <p class="hash">SHA-256: <span data-sha>c875040ace5ed531a12486d446ce78315b894c38cabf49abf82ffcf6cd433e06</span></p>
+        <p class="hash">SHA-256: <span data-sha>55d42d4c58b952f1dcc4af0aca3d95029ab198fffa0d97604cf2db342dfe4d60</span></p>
       </div>
     </div>
     <div class="specs">
-      <div><span>Version</span><span data-ver>1.8.1</span></div>
+      <div><span>Version</span><span data-ver>1.9.0</span></div>
       <div><span>System</span><span>Windows 10 / 11 x64</span></div>
       <div><span>Format</span><span>.msi · <span data-size>16 MB</span></span></div>
       <div><span>Devices</span><span>Cisco IOS / IOS-XE and any SSH device</span></div>

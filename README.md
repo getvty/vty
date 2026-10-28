@@ -11,7 +11,7 @@ SSH client and serial console for Cisco switches, built for teams that manage hu
 
 Other formats: [MSI](https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1.msi) · [portable (zip)](https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1-portable.zip)
 
-SHA-256 of `Vty-1.9.1-setup.exe`: `5a43491503ce47925161f7ed8242a182b826acf351a718553c2066f4e094720f`
+SHA-256 of `Vty-1.9.1-setup.exe`: `2cd5ce51412dd502fc456392eff55603ace6ad6b86528b9179b85506c4dbbb2c`
 <!--/dl-en-->
 
 If Windows shows “Windows protected your PC”: **More info → Run anyway** (the installer isn't signed yet).
@@ -46,7 +46,7 @@ Client SSH et console série pour switchs Cisco, pensé pour les équipes qui g�
 
 Autres formats : [MSI](https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1.msi) · [portable (zip)](https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1-portable.zip)
 
-SHA-256 de `Vty-1.9.1-setup.exe` : `5a43491503ce47925161f7ed8242a182b826acf351a718553c2066f4e094720f`
+SHA-256 de `Vty-1.9.1-setup.exe` : `2cd5ce51412dd502fc456392eff55603ace6ad6b86528b9179b85506c4dbbb2c`
 <!--/dl-fr-->
 
 Si Windows affiche « Windows a protégé votre ordinateur » : **Informations complémentaires → Exécuter quand même** (l'installeur n'est pas encore signé).

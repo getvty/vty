@@ -508,8 +508,8 @@ h2{text-wrap:balance}
 <section id="security"><div class="wrap split">
   <div>
     <p class="eyebrow">Security</p>
-    <h2>Nothing leaves your computer.</h2>
-    <p class="intro" style="margin-bottom:26px">Vty runs entirely on your PC. No account, no cloud, no telemetry.</p>
+    <h2>Your data stays on your computer.</h2>
+    <p class="intro" style="margin-bottom:26px">Vty runs entirely on your PC. No account, no cloud, no telemetry. It only goes online for two things: checking for new versions (can be turned off) and, with a VTY- Pro key, checking the license with Polar about once a day.</p>
     <ul class="checks">
       <li>Passwords are saved only if you allow it, in an encrypted vault; passphrases are never saved.</li>
       <li>Config backups encrypted on your computer (AES-256, key protected by Windows), with an optional master password and automatic lock.</li>
@@ -518,7 +518,7 @@ h2{text-wrap:balance}
       <li>Only reachable from your own computer (127.0.0.1), never from the network.</li>
       <li>SSH fingerprint checked: the connection is blocked if the switch's key changes.</li>
       <li>Old SHA-1 and CBC algorithms only used as a last resort, and flagged.</li>
-      <li>License checked on your computer, with no Internet connection.</li>
+      <li>License check: only the key, Polar's public organization ID and the PC name are sent. Your sessions, configurations and passwords never leave the computer.</li>
       <li>CSV exports protected against Excel formula injection.</li>
     </ul>
   </div>
@@ -595,6 +595,7 @@ h2{text-wrap:balance}
   <p class="eyebrow">FAQ</p>
   <h2>Frequently asked questions</h2>
   <div class="faq">
+    <details><summary>Who makes Vty?</summary><p>I do: Ibrahima NDIAYE, a network and security engineer in France. I manage Cisco switches every day, and I built Vty because I wanted a tool that stops me from running <code>reload</code> on the wrong device. Vty is a personal project, developed independently of my employer and published by my sole-proprietor business (see the <a href="legal.html">legal notice</a>). Questions, bugs, criticism: <a href="mailto:contact@getvty.com">contact@getvty.com</a>, I answer myself.</p></details>
     <details><summary>Which devices does Vty work with?</summary><p>The terminal works with any device reachable over SSH, Telnet or a serial console. Backups, the audit, macros and the vulnerability check are built for Cisco IOS and IOS-XE.</p></details>
     <details><summary>Where are my passwords stored?</summary><p>By default, nowhere: Vty asks for them when you connect and keeps them in memory only as long as needed. You can allow it to save them, and they then go into an encrypted vault on your computer (turning this option off deletes the ones already saved). For an SSH key, only its location is saved; the passphrase is asked again. Saved configurations, which contain your devices' secrets, are encrypted on your computer, and you can add a master password.</p></details>
     <details><summary>Is the free version really free?</summary><p>Yes, with no time limit and no sign-up. It's limited to 25 saved devices; the fleet management features (backups, audit, multi-exec…) need a Pro license.</p></details>

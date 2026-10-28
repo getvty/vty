@@ -6,9 +6,13 @@ SSH client and serial console for Cisco switches, built for teams that manage hu
 
 ## Download
 
-[⬇ Vty 1.9.0 for Windows](https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi) · Windows 10 / 11 x64 · free, Pro €45 excl. VAT
+<!--dl-en-->
+[⬇ Vty 1.9.1 for Windows](https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1-setup.exe) · Windows 10 / 11 x64
 
-SHA-256: `55d42d4c58b952f1dcc4af0aca3d95029ab198fffa0d97604cf2db342dfe4d60`
+Other formats: [MSI](https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1.msi) · [portable (zip)](https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1-portable.zip)
+
+SHA-256 of `Vty-1.9.1-setup.exe`: `5a43491503ce47925161f7ed8242a182b826acf351a718553c2066f4e094720f`
+<!--/dl-en-->
 
 If Windows shows “Windows protected your PC”: **More info → Run anyway** (the installer isn't signed yet).
 
@@ -21,7 +25,7 @@ If Windows shows “Windows protected your PC”: **More info → Run anyway** (
 - Security audit graded A to E (82 checks, CIS / DISA STIG / ANSSI)
 - Known vulnerabilities via the Cisco PSIRT API
 - Read-only bulk commands, macros, SFTP / SCP with MD5
-- No password ever saved, listens on localhost only
+- Passwords saved only if you allow it (encrypted vault), listens on localhost only
 - English and French interface
 
 This repository holds the website and the published releases.
@@ -37,9 +41,13 @@ Client SSH et console série pour switchs Cisco, pensé pour les équipes qui g�
 
 ## Télécharger
 
-[⬇ Vty 1.9.0 pour Windows](https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi) · Windows 10 / 11 x64 · gratuit, Pro à 45 € HT
+<!--dl-fr-->
+[⬇ Vty 1.9.1 pour Windows](https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1-setup.exe) · Windows 10 / 11 x64
 
-SHA-256 : `55d42d4c58b952f1dcc4af0aca3d95029ab198fffa0d97604cf2db342dfe4d60`
+Autres formats : [MSI](https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1.msi) · [portable (zip)](https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1-portable.zip)
+
+SHA-256 de `Vty-1.9.1-setup.exe` : `5a43491503ce47925161f7ed8242a182b826acf351a718553c2066f4e094720f`
+<!--/dl-fr-->
 
 Si Windows affiche « Windows a protégé votre ordinateur » : **Informations complémentaires → Exécuter quand même** (l'installeur n'est pas encore signé).
 
@@ -51,6 +59,6 @@ Si Windows affiche « Windows a protégé votre ordinateur » : **Informations c
 - Audit sécu noté de A à E (82 contrôles, CIS / DISA STIG / ANSSI)
 - Failles connues via l'API Cisco PSIRT
 - Commandes en masse en lecture seule, macros, SFTP / SCP avec MD5
-- Aucun mot de passe enregistré, écoute uniquement en local
+- Mots de passe enregistrés seulement si tu l'autorises (coffre chiffré), écoute uniquement en local
 
 Ce dépôt contient le site et les versions publiées.

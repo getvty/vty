@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-ventes="fermees">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -225,27 +225,152 @@ html[lang="en"] .case q{quotes:"“" "”"}
 .specs div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid #2C3A45}
 .specs>div>span:first-child{opacity:.7}
 .specs>div>span:last-child{font-family:var(--mono);text-align:right}
-footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line)}
+footer{color:var(--muted);font-size:13.5px;border-top:1px solid var(--line)}
+
+/* refonte 1.9.1 : barre fixe, titres de section, nouveautés, téléchargements, achat */
+.skip{position:absolute;left:-999px;top:8px;background:var(--led);color:#1A1200;padding:8px 14px;border-radius:8px;font-weight:600;z-index:100;text-decoration:none}
+.skip:focus{left:12px}
+section[id]{scroll-margin-top:68px}
+.topbar{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 84%,transparent);-webkit-backdrop-filter:saturate(1.4) blur(12px);backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid transparent;transition:border-color .2s}
+.topbar.scrolled{border-bottom-color:var(--line)}
+.topbar nav{padding-block:12px}
+.eyebrow{font:600 12px var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--led-ink);margin:0 0 12px;display:flex;align-items:center;gap:8px}
+.eyebrow::before{content:"";width:18px;height:2px;background:var(--led);border-radius:2px}
+.btn.big{padding:15px 24px;font-size:16.5px}
+.altdl{font-size:14px;color:var(--muted);margin:14px 0 0}
+.altdl a{color:var(--ink);text-underline-offset:3px}
+.navlinks .navbuy{display:none}
+html:not([data-ventes="fermees"]) .navlinks .navbuy{display:inline-block;background:var(--led);border-color:var(--led);color:#1A1200;font-weight:600;border-radius:8px;padding:7px 13px}
+.navlinks .navdl{transition:background .15s}
+.navlinks .navdl:hover{background:color-mix(in srgb,var(--slate) 10%,transparent)}
+
+/* nouveautés */
+.news{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+@media (max-width:900px){.news{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.news{grid-template-columns:1fr}}
+.nw{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 20px 24px;display:grid;gap:10px;align-content:start;transition:border-color .15s,transform .15s}
+.nw:hover{border-color:color-mix(in srgb,var(--led) 55%,var(--line))}
+.nw .ic{width:38px;height:38px;border-radius:10px;background:color-mix(in srgb,var(--led) 14%,transparent);color:var(--led);display:grid;place-items:center}
+.nw .ic svg{width:20px;height:20px}
+.nw h3{margin:0;font:700 18px/1.25 var(--display);letter-spacing:-.01em;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.nw p{margin:0;color:var(--muted);font-size:14.5px}
+
+/* téléchargements */
+.dls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:26px}
+@media (max-width:900px){.dls{grid-template-columns:1fr}}
+.dlc{background:rgba(255,255,255,.035);border:1px solid #2C3A45;border-radius:14px;padding:22px 20px;display:flex;flex-direction:column;gap:10px}
+.dlc.main{border:2px solid var(--led);background:rgba(240,174,58,.06)}
+.dlc h3{margin:0;font:700 18px var(--display);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dlc p{margin:0;font-size:14.5px;color:var(--muted)}
+.dlc .fname{font:500 12.5px var(--mono);color:var(--ink);overflow-wrap:anywhere}
+.dlc .sz{color:var(--muted)}
+.dlc .btn{margin-top:auto;justify-content:center;width:100%}
+.dlc details{font-size:12.5px;color:var(--muted)}
+.dlc details summary{cursor:pointer}
+.dlc .hash{font:11.5px/1.5 var(--mono);overflow-wrap:anywhere;margin-top:6px}
+.sub-dl{display:grid;gap:10px;margin-top:26px;font-size:14px;max-width:80ch}
+.sub-dl p{margin:0;color:var(--muted)}
+.sub-dl a{color:var(--ink)}
+.specline{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:13.5px;color:var(--muted);margin-top:20px;padding-top:16px;border-top:1px solid #2C3A45}
+.specline b{color:var(--ink);font-weight:500}
+
+/* achat : un seul interrupteur, <html data-ventes="fermees"> → retirer l'attribut quand Polar est validé */
+.buy{display:inline-flex}
+html[data-ventes="fermees"] .buy{display:none}
+html:not([data-ventes="fermees"]) .waitlist{display:none}
+.paynote{font-size:13px;color:var(--muted);margin:0;text-align:center}
+
+/* pied de page */
+footer{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr));gap:26px 40px;padding-block:40px 48px}
+@media (max-width:700px){footer{grid-template-columns:1fr}}
+footer h4{margin:0 0 10px;font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+footer a{text-decoration:none;color:var(--muted)}footer a:hover{color:var(--ink);text-decoration:underline}
+footer .tag-l{margin:10px 0 0;max-width:34ch}
+
+/* habillage visuel : halo et grille en fond, capture encadrée, chiffres clés, relief des cartes, apparition au défilement */
+body{background:radial-gradient(900px 520px at 80% -80px,rgba(240,174,58,.12),transparent 65%),radial-gradient(800px 480px at -8% 140px,rgba(88,150,190,.09),transparent 65%),var(--bg)}
+main{position:relative;overflow-x:clip}
+main::before{content:"";position:absolute;inset:0 0 auto 0;height:820px;pointer-events:none;background-image:linear-gradient(rgba(148,162,172,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(148,162,172,.10) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 70% 80% at 50% 0,#000 25%,transparent 75%);mask-image:radial-gradient(ellipse 70% 80% at 50% 0,#000 25%,transparent 75%)}
+main>*{position:relative}
+.hl{background:linear-gradient(100deg,#F6C468 0%,#F0AE3A 45%,#E8884A 100%);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;padding-bottom:.06em}
+h1{font-size:clamp(40px,6.4vw,72px)}
+.btn{transition:transform .15s,box-shadow .2s,filter .15s,background .15s,border-color .15s}
+.btn.primary{background:linear-gradient(180deg,#F6BC52,#EDA52E);border-color:#EDA52E;box-shadow:0 10px 28px -10px rgba(240,174,58,.6),inset 0 1px 0 rgba(255,255,255,.28)}
+.btn.primary:hover{transform:translateY(-1px);filter:brightness(1.05);box-shadow:0 14px 34px -10px rgba(240,174,58,.7),inset 0 1px 0 rgba(255,255,255,.3)}
+.btn.ghost:hover{border-color:var(--ink)}
+.term{box-shadow:0 0 0 1px rgba(255,255,255,.04),0 40px 90px -30px rgba(0,0,0,.8),0 0 120px -50px rgba(240,174,58,.35)}
+
+/* capture encadrée juste sous le héro */
+.showcase{margin:6px auto 0;max-width:1040px;padding-bottom:34px}
+.frame{position:relative;border-radius:14px;background:#10171C;border:1px solid #2B3842;box-shadow:0 0 0 1px rgba(255,255,255,.03),0 50px 110px -40px rgba(0,0,0,.9),0 0 160px -60px rgba(240,174,58,.30);overflow:hidden}
+.fbar{display:flex;align-items:center;gap:7px;padding:10px 14px;background:#161F26;border-bottom:1px solid #26313A}
+.fbar i{width:11px;height:11px;border-radius:50%;background:#2E3B45;display:inline-block}
+.fbar i:first-child{background:#E8705C}.fbar i:nth-child(2){background:#F0AE3A}.fbar i:nth-child(3){background:#5DBB86}
+.fbar span{margin-left:10px;font:500 12px var(--mono);color:var(--muted)}
+.frame img{display:block;width:100%;height:auto}
+.fcap{font-size:14px;color:var(--muted);text-align:center;margin:16px auto 0;max-width:70ch}
+.fcap b{color:var(--ink);font-weight:600}
+
+/* chiffres clés */
+.stats{list-style:none;margin:0 auto;padding:0;max-width:1040px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));overflow:hidden}
+.stats li{padding:22px 20px;display:grid;gap:4px;border-left:1px solid var(--line)}
+.stats li:first-child{border-left:0}
+.stats b{font:800 clamp(30px,4vw,42px)/1 var(--display);letter-spacing:-.02em;color:var(--led)}
+.stats span{font-size:13.5px;color:var(--muted)}
+@media (max-width:720px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats li:nth-child(3){border-left:0}.stats li:nth-child(n+3){border-top:1px solid var(--line)}}
+
+/* sections : filet dégradé au lieu d'un trait plein, fonds légèrement différenciés */
+section{border-top:0;position:relative}
+section::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(1080px,92%);height:1px;background:linear-gradient(90deg,transparent,#2E3C47 20%,#2E3C47 80%,transparent)}
+#fonctions,#securite,#versions{background:linear-gradient(180deg,rgba(255,255,255,.022),transparent 70%)}
+h2{text-wrap:balance}
+
+/* cartes */
+.nw,.port,.case,.plan,.shot,.dlc{transition:border-color .2s,background .2s,box-shadow .25s,transform .25s}
+.nw{background:linear-gradient(180deg,#18212A,#141C22)}
+.nw:hover{border-color:rgba(240,174,58,.5);box-shadow:0 18px 40px -22px rgba(240,174,58,.35);transform:translateY(-2px)}
+.nw .ic{box-shadow:inset 0 0 0 1px rgba(240,174,58,.25)}
+.port:hover{background:#1A252D}
+.port .id i{box-shadow:0 0 8px 1px color-mix(in srgb,var(--ok) 70%,transparent)}
+.shot:hover{border-color:#3A4A56;transform:translateY(-2px);box-shadow:0 24px 50px -28px rgba(0,0,0,.8)}
+.plan.pro{background:linear-gradient(180deg,#1A232B,#151C21);box-shadow:0 0 0 1px rgba(240,174,58,.28),0 40px 90px -40px rgba(240,174,58,.35)}
+.dlc.main{box-shadow:0 30px 70px -40px rgba(240,174,58,.45)}
+.dlc:not(.main):hover{border-color:#41515D;transform:translateY(-2px)}
+.dl{box-shadow:0 50px 110px -60px rgba(0,0,0,.9),inset 0 1px 0 rgba(255,255,255,.05)}
+.case q{color:var(--ink)}
+.cases{border-top-color:var(--led)}
+.tag.pro{box-shadow:0 0 0 1px rgba(240,174,58,.3)}
+
+/* apparition douce au défilement (désactivée si le visiteur préfère moins d'animations) */
+@media (prefers-reduced-motion:no-preference){
+  .js .rv{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .js .rv.in{opacity:1;transform:none}
+}
 </style>
 <script>document.documentElement.className+=" js"</script>
 </head>
 <body>
-<div class="wrap">
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="topbar"><div class="wrap">
   <nav>
     <a class="brand" href="#"><span class="mark">&gt;_</span>Vty</a>
-    <div class="navlinks"><a class="opt" href="#demo">Démo</a><a class="opt" href="#fonctions">Fonctions</a><a class="opt" href="#securite">Sécurité</a><a href="#tarifs">Tarifs</a><a class="opt" href="#faq">FAQ</a><a href="en/" hreflang="en" lang="en">English</a><a class="navdl" href="#telecharger">Télécharger</a></div>
+    <div class="navlinks"><a class="opt" href="#nouveautes">Nouveautés</a><a class="opt" href="#demo">Démo</a><a class="opt" href="#fonctions">Fonctions</a><a class="opt" href="#securite">Sécurité</a><a href="#tarifs">Tarifs</a><a class="opt" href="#faq">FAQ</a><a href="en/" hreflang="en" lang="en">English</a><a class="navbuy" href="https://buy.polar.sh/polar_cl_MehzTNa2frE8oiIOHFTXB3EfQ4hk7bkxrXmWx3ZlGOL" data-goatcounter-click="achat-nav" data-goatcounter-title="Acheter · barre">Acheter Pro</a><a class="navdl" href="#telecharger">Télécharger</a></div>
   </nav>
-
+</div></header>
+<main id="contenu">
+<div class="wrap">
   <div class="hero">
     <div>
-      <span class="status"><span class="ledd"></span><span>Version <span data-ver>1.9.0</span> pour Windows 10 et 11</span></span>
-      <h1>Gère 200 switchs Cisco comme s'il n'y en avait qu'un.</h1>
+      <span class="status"><span class="ledd"></span><span>Version <span data-ver>1.9.1</span> pour Windows 10 et 11</span></span>
+      <h1>Gère 200 switchs Cisco <span class="hl">comme s'il n'y en avait qu'un.</span></h1>
       <p class="lead">Vty réunit tes <b>sessions SSH</b>, les <b>sauvegardes de configs</b>, l'<b>audit de sécurité</b> et les <b>commandes en masse</b> dans un seul outil. Fini les vingt fenêtres PuTTY et les copier-coller d'un switch à l'autre.</p>
       <div class="ctas">
-        <a class="btn primary" href="https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi" data-goatcounter-click="telechargement-haut" data-goatcounter-title="Télécharger · haut de page"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>Télécharger gratuitement</a>
+        <a class="btn primary big" href="https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1-setup.exe" data-dl="exe" data-goatcounter-click="telechargement-haut" data-goatcounter-title="Télécharger · haut de page"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>Télécharger gratuitement</a>
         <a class="btn ghost" href="#demo"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 4.5v11l9-5.5z"/></svg>Voir la démo</a>
       </div>
-      <p class="meta"><span>Gratuit jusqu'à 25 équipements</span><span>Aucun mot de passe enregistré</span><span>Hors ligne</span></p>
+      <p class="altdl">Installeur .exe pour Windows 10 et 11. Aussi en <a href="#telecharger">MSI ou en version portable</a>.</p>
+      <p class="meta"><span>Gratuit jusqu'à 25 équipements</span><span>Mots de passe : seulement si tu l'autorises</span><span>Hors ligne</span></p>
     </div>
 
     <div class="term" role="img" aria-label="Vty envoie la création du VLAN 30 à 12 switchs en une seule saisie, et chaque switch se coche une fois configuré">
@@ -271,7 +396,25 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
   </div>
 </div>
 
+<div class="wrap"><div class="showcase"><div class="frame"><div class="fbar" aria-hidden="true"><i></i><i></i><i></i><span>Vty · CORE-SW-01 · ACCESS-SW-12</span></div><a href="img/vty-terminaux.webp" title="Voir en grand"><img src="img/vty-terminaux.webp" width="2000" height="1125" fetchpriority="low" alt="Vty : 20 switchs rangés par dossiers à gauche, et deux terminaux SSH côte à côte sur CORE-SW-01 et ACCESS-SW-12"></a></div><p class="fcap"><b>Deux terminaux côte à côte.</b> Le parc rangé par dossiers à gauche, jusqu'à quatre sessions à l'écran, la sortie Cisco colorée. Le cadre rouge signale un équipement critique.</p></div></div>
+<div class="wrap" style="padding-bottom:8px"><ul class="stats"><li><b>82</b><span>contrôles d'audit (CIS, STIG, ANSSI)</span></li><li><b>6</b><span>sauvegardes en parallèle</span></li><li><b>4</b><span>terminaux à l'écran</span></li><li><b>25</b><span>équipements dans la version gratuite</span></li></ul></div>
+
+<section id="nouveautes"><div class="wrap">
+  <p class="eyebrow">Nouveau dans la 1.9</p>
+  <h2>Six nouveautés qui changent la journée.</h2>
+  <p class="intro">Les dernières versions ajoutent ce qui manquait pour partir d'un câble branché et finir avec un parc rangé, sauvegardé et audité.</p>
+  <div class="news">
+    <div class="nw"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2 20 3m-4 4 3 3m-6-1 2 2"/></svg></span><h3>Tes clés SSH, générées dans Vty</h3><p>Ed25519, RSA 3072 ou 4096, avec ou sans phrase secrète. Rangées dans « Mes clés », avec les bons droits Windows posés pour OpenSSH.</p></div>
+    <div class="nw"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="2"/><path d="M7.8 7.8a6 6 0 0 0 0 8.4m8.4-8.4a6 6 0 0 1 0 8.4M4.9 4.9a10 10 0 0 0 0 14.2m14.2-14.2a10 10 0 0 1 0 14.2"/></svg></span><h3>Découverte du réseau <span class="tag pro">Pro</span></h3><p>Ping et ports 22 / 23 / 80 / 443 sur une plage ou un CIDR, puis les équipements trouvés rejoignent tes sessions en un clic.</p></div>
+    <div class="nw"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01M12 7h5M12 17h5"/></svg></span><h3>Scan de ports TCP <span class="tag pro">Pro</span></h3><p>Listes de ports prêtes ou sur mesure, filtres et export CSV. Réservé aux réseaux que tu as le droit de tester.</p></div>
+    <div class="nw"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8M12 17h.01"/></svg></span><h3>Une aide sur chaque écran</h3><p>Le bouton « ? Aide » (ou F1) explique à quoi sert l'écran, comment faire, ce que Vty envoie à l'équipement et les points d'attention.</p></div>
+    <div class="nw"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1m1 8.7a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></span><h3>Ouverture depuis GNS3</h3><p>Les liens ssh:// et telnet:// (syntaxe PuTTY comprise) ouvrent Vty. Une console Telnet lancée en SSH par erreur est proposée en Telnet.</p></div>
+    <div class="nw"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h10l6 6v10H4z"/><path d="M14 4v6h6M8 14h8M8 17h5"/></svg></span><h3>Configurations réunies <span class="tag pro">Pro</span></h3><p>Configuration actuelle, historique, comparaison et recherche au même endroit. Deux historiques peuvent être fusionnés sans rien perdre.</p></div>
+  </div>
+</div></section>
+
 <section id="situations"><div class="wrap">
+  <p class="eyebrow">Au quotidien</p>
   <h2>Tu reconnais ces journées ?</h2>
   <p class="intro">Vty a été écrit par un ingénieur réseau, pour les moments où la console devient un problème au lieu d'un outil.</p>
   <div class="cases">
@@ -307,6 +450,7 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
 </div></section>
 
 <section id="demo"><div class="wrap">
+  <p class="eyebrow">Démo</p>
   <h2>Deux minutes pour tout voir.</h2>
   <p class="intro">Sessions SSH, écran partagé, macros, sauvegardes, commandes en masse, audit et garde-fous, filmés sur un parc fictif de 20 switchs.</p>
   <figure class="shot">
@@ -319,13 +463,10 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
 </div></section>
 
 <section id="captures"><div class="wrap">
+  <p class="eyebrow">En images</p>
   <h2>Ton parc entier, sous les yeux.</h2>
   <p class="intro">Captures de la vraie application sur un parc d'exemple. Les noms et les adresses sont fictifs.</p>
   <div class="shots">
-    <figure class="shot">
-      <a href="img/vty-terminaux.webp" title="Voir en grand"><img src="img/vty-terminaux.webp" width="2000" height="1125" loading="lazy" alt="Vty : 20 switchs rangés par dossiers à gauche, et deux terminaux SSH côte à côte sur CORE-SW-01 et ACCESS-SW-12"></a>
-      <figcaption><b>Deux terminaux côte à côte.</b> Le parc rangé par dossiers à gauche, jusqu'à quatre sessions à l'écran, la sortie Cisco colorée. Le cadre rouge signale un équipement critique.</figcaption>
-    </figure>
     <div class="trio">
       <figure class="shot">
         <a href="img/vty-tableau.webp" title="Voir en grand"><img src="img/vty-tableau-zoom.webp" width="1200" height="678" loading="lazy" alt="Tableau de bord : 20 équipements joignables, 20 sauvegardés, note d'audit moyenne et alertes par switch"></a>
@@ -344,6 +485,7 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
 </div></section>
 
 <section id="fonctions"><div class="wrap">
+  <p class="eyebrow">Fonctions</p>
   <h2>Tout ce que tu fais sur tes switchs, dans une seule fenêtre.</h2>
   <p class="freebar"><b>Dans la version gratuite :</b> SSH (mot de passe, clé ou Pageant), Telnet, console série, onglets, recherche instantanée, garde-fous, journaux de session et import de tes sessions MobaXterm, PuTTY ou d'un CSV. Jusqu'à 25 équipements.</p>
   <div class="ports">
@@ -355,15 +497,20 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
     <div class="port"><span class="id"><i></i>Gi1/0/6<span class="tag pro">Pro</span></span><h3>Des macros sans faute de frappe</h3><p>Port ToIP + PC, VLAN sur un trunk, port err-disabled : champs vérifiés, aperçu avant envoi.</p></div>
     <div class="port"><span class="id"><i></i>Gi1/0/7<span class="tag pro">Pro</span></span><h3>Une image IOS par glisser-déposer</h3><p>SFTP / SCP, avec le MD5 vérifié par le switch après l'envoi.</p></div>
     <div class="port"><span class="id"><i></i>Gi1/0/8<span class="tag pro">Pro</span></span><h3>L'état du parc d'un coup d'œil</h3><p>Joignabilité, sauvegardes anciennes, notes d'audit et alertes sur un seul écran.</p></div>
+    <div class="port"><span class="id"><i></i>Gi1/0/9<span class="tag pro">Pro</span></span><h3>Découvrir ce qui est branché</h3><p>Ping et ports usuels sur une plage ou un CIDR, puis ajout des équipements trouvés à tes sessions.</p></div>
+    <div class="port"><span class="id"><i></i>Gi1/0/10<span class="tag pro">Pro</span></span><h3>Scanner les ports TCP</h3><p>Listes prêtes ou personnalisées, filtres, export CSV, sur les réseaux que tu es autorisé à tester.</p></div>
+    <div class="port"><span class="id"><i></i>Gi1/0/11<span class="tag free">Gratuit</span></span><h3>Générer tes clés SSH</h3><p>Ed25519 ou RSA, avec ou sans phrase secrète, rangées dans « Mes clés » avec les droits Windows qu'OpenSSH attend.</p></div>
+    <div class="port"><span class="id"><i></i>Gi1/0/12<span class="tag free">Gratuit</span></span><h3>Une aide à chaque écran</h3><p>Bouton « ? Aide » ou F1 : le but de l'écran, les étapes, ce que Vty envoie, les points d'attention.</p></div>
   </div>
 </div></section>
 
 <section id="securite"><div class="wrap split">
   <div>
+    <p class="eyebrow">Sécurité</p>
     <h2>Rien ne quitte ton poste.</h2>
     <p class="intro" style="margin-bottom:26px">Vty tourne entièrement sur ton PC. Pas de compte, pas de cloud, pas de télémétrie.</p>
     <ul class="checks">
-      <li>Aucun identifiant ni mot de passe écrit sur le disque : ils restent en mémoire le temps de la connexion.</li>
+      <li>Les mots de passe ne sont enregistrés que si tu l'autorises, dans un coffre chiffré ; les phrases secrètes ne le sont jamais.</li>
       <li>Sauvegardes de configs chiffrées sur ton poste (AES-256, clé protégée par Windows), avec un mot de passe maître en option et le verrouillage automatique.</li>
       <li>Secrets masqués dans les journaux de session, les copies et les exports : communautés SNMP, mots de passe, clés.</li>
       <li>Journal des actions : multi-exec, macros, commandes en masse, commandes dangereuses confirmées, avec qui, quoi et quand.</li>
@@ -387,6 +534,7 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
 </div></section>
 
 <section id="tarifs"><div class="wrap">
+  <p class="eyebrow">Tarifs</p>
   <h2>Gratuit pour démarrer. Pro quand le parc grandit.</h2>
   <p class="intro">Une seule installation : la version gratuite devient Pro dès que tu colles ta clé de licence.</p>
   <div class="plans">
@@ -401,12 +549,12 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
         <li>Garde-fous sur les commandes dangereuses</li>
         <li>Jusqu'à 25 équipements enregistrés</li>
       </ul>
-      <a class="btn ghost" href="https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi" data-goatcounter-click="telechargement-gratuit" data-goatcounter-title="Télécharger · offre gratuite">Télécharger</a>
+      <a class="btn ghost" href="https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1-setup.exe" data-dl="exe" data-goatcounter-click="telechargement-gratuit" data-goatcounter-title="Télécharger · offre gratuite">Télécharger</a>
     </div>
     <div class="plan pro">
-      <h3>Pro <span class="tag pro">Recommandé</span></h3>
-      <div class="price">45 €<small>HT par utilisateur</small></div>
-      <p class="sub">Licence à vie · 1 an de mises à jour inclus</p>
+      <h3>Pro Personnel</h3>
+      <div class="price">45 €<small>TTC, par utilisateur, paiement unique</small></div>
+      <p class="sub">Usage personnel ou scolaire, hors activité professionnelle · licence à vie · 12 mois de mises à jour · 1 appareil</p>
       <ul class="checks">
         <li>Tout le gratuit, équipements illimités</li>
         <li>Écran partagé jusqu'à 4 terminaux et multi-exec</li>
@@ -415,33 +563,54 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
         <li>Commandes en masse, macros, fichiers SFTP / SCP</li>
         <li>Tableau de bord du parc</li>
       </ul>
-      <button type="button" class="btn primary" id="notify-btn" aria-expanded="false" aria-controls="notify">Être prévenu de l'ouverture</button>
-      <div id="notify" class="notify" hidden>
+      <a class="btn primary buy" href="https://buy.polar.sh/polar_cl_MehzTNa2frE8oiIOHFTXB3EfQ4hk7bkxrXmWx3ZlGOL" data-goatcounter-click="achat-pro" data-goatcounter-title="Acheter Vty Pro">Acheter Pro Personnel · 45 €</a>
+      <p class="paynote buy">Paiement sécurisé par Polar. Ta clé de licence arrive par e-mail juste après.</p>
+      <button type="button" class="btn primary waitlist" id="notify-btn" aria-expanded="false" aria-controls="notify">Être prévenu de l'ouverture</button>
+      <div id="notify" class="notify waitlist" hidden>
         <p>Envoie un e-mail avec l'objet « Vty Pro » à :</p>
         <div class="mailrow"><code id="notify-mail">contact@getvty.com</code><button type="button" id="notify-copy">Copier</button></div>
         <p><a href="mailto:contact@getvty.com?subject=Vty%20Pro">Ou ouvrir ma messagerie</a>. Tu seras prévenu le jour de l'ouverture des ventes.</p>
       </div>
     </div>
+    <div class="plan pro">
+      <h3>Pro Entreprise <span class="tag pro">Recommandé</span></h3>
+      <div class="price">65 €<small>TTC, par utilisateur, paiement unique</small></div>
+      <p class="sub">Usage professionnel (entreprise, indépendant, administration) · facture à ton nom · licence à vie · 12 mois de mises à jour · 1 appareil</p>
+      <ul class="checks">
+        <li>Les mêmes fonctions que Pro Personnel</li>
+        <li>Une licence par utilisateur ; plusieurs postes : une licence par poste</li>
+        <li>Facture avec ton numéro de TVA (case « achat professionnel » sur la page de paiement)</li>
+        <li>Devis ou bon de commande sur demande : <a href="mailto:contact@getvty.com?subject=Vty%20Pro%20Entreprise">contact@getvty.com</a></li>
+      </ul>
+      <a class="btn primary buy" href="https://buy.polar.sh/polar_cl_zdLbj6Ycnq6VC51GPMR0JldHgSPyAtYuQXvqD24ufuD" data-goatcounter-click="achat-entreprise" data-goatcounter-title="Acheter Pro Entreprise">Acheter Pro Entreprise · 65 €</a>
+      <p class="paynote buy">Paiement sécurisé par Polar. Ta clé de licence arrive par e-mail juste après.</p>
+      <a class="btn primary waitlist" href="mailto:contact@getvty.com?subject=Vty%20Pro%20Entreprise">Être prévenu de l'ouverture</a>
+    </div>
   </div>
-  <p class="fine">Après la première année, ta version reste Pro à vie. Le renouvellement sert seulement à recevoir les nouvelles versions.</p>
+  <p class="fine">Les deux licences ont les mêmes fonctions : seul l'usage change. Après les 12 mois, ta version reste Pro à vie. Le renouvellement sert seulement à recevoir les nouvelles versions. Le paiement est géré par Polar, vendeur officiel, qui calcule les taxes selon ton pays.</p>
 </div></section>
 
 <section id="faq"><div class="wrap">
+  <p class="eyebrow">FAQ</p>
   <h2>Questions fréquentes</h2>
   <div class="faq">
     <details><summary>Avec quels équipements Vty fonctionne-t-il ?</summary><p>Le terminal fonctionne avec tout appareil joignable en SSH, Telnet ou console série. Les sauvegardes, l'audit, les macros et la recherche de failles sont faits pour Cisco IOS et IOS-XE.</p></details>
-    <details><summary>Où sont stockés mes mots de passe ?</summary><p>Nulle part. Vty te les demande à la connexion et les garde en mémoire le temps nécessaire, sans jamais les écrire sur le disque. Pour une clé SSH, seul son emplacement est enregistré ; la phrase secrète est redemandée. Les configurations sauvegardées, qui contiennent les secrets des équipements, sont chiffrées sur ton poste, et tu peux ajouter un mot de passe maître.</p></details>
+    <details><summary>Où sont stockés mes mots de passe ?</summary><p>Par défaut, nulle part : Vty te les demande à la connexion et les garde en mémoire le temps nécessaire. Tu peux l'autoriser à les enregistrer, et ils vont alors dans un coffre chiffré sur ton poste (interdire cette option efface ceux déjà enregistrés). Pour une clé SSH, seul son emplacement est enregistré ; la phrase secrète est redemandée. Les configurations sauvegardées, qui contiennent les secrets des équipements, sont chiffrées sur ton poste, et tu peux ajouter un mot de passe maître.</p></details>
     <details><summary>La version gratuite est-elle vraiment gratuite ?</summary><p>Oui, sans limite de durée et sans inscription. Elle est limitée à 25 équipements enregistrés ; les fonctions de gestion du parc (sauvegardes, audit, multi-exec…) demandent la licence Pro.</p></details>
-    <details><summary>Windows affiche « Windows a protégé votre ordinateur ». C'est normal ?</summary><p>Oui : l'installeur n'est pas encore signé. Clique sur « Informations complémentaires », puis « Exécuter quand même ». Tu peux vérifier le fichier avec son empreinte SHA-256 et l'analyse VirusTotal, plus bas sur cette page.</p></details>
-    <details><summary>Faut-il une connexion Internet ?</summary><p>Non. Vty fonctionne sur un réseau isolé, licence comprise. Il vérifie seulement s'il existe une nouvelle version au démarrage (désactivable), et la recherche de failles Cisco ne contacte Cisco que si tu la lances.</p></details>
-    <details><summary>Comment marche la licence Pro ?</summary><p>45 € HT par utilisateur, une seule fois. Ta version reste Pro à vie, avec un an de nouvelles versions inclus. Les ventes ouvrent bientôt : laisse ton e-mail dans la section Tarifs pour être prévenu.</p></details>
+    <details><summary>Windows affiche « Windows a protégé votre ordinateur ». C'est normal ?</summary><p>Oui : l'installeur n'est pas encore signé. Clique sur « Informations complémentaires », puis « Exécuter quand même ». Tu peux vérifier le fichier avec son empreinte SHA-256 et l'analyse VirusTotal, dans la section Télécharger.</p></details>
+    <details><summary>.exe, MSI ou portable : lequel choisir ?</summary><p>L'installeur .exe convient à la plupart des postes : il installe Vty avec son icône et un raccourci. Le MSI sert à déployer Vty par GPO, SCCM ou Intune. La version portable (zip) se lance depuis n'importe quel dossier ou clé USB, sans installation. Les trois contiennent la même application.</p></details>
+    <details><summary>Faut-il une connexion Internet ?</summary><p>Pas pour la version gratuite : elle fonctionne sur un réseau isolé. Une clé Pro vendue en ligne (VTY-) est activée une fois sur Internet, puis revérifiée environ une fois par jour ; hors ligne, Pro reste actif 30 jours. Vty vérifie aussi s'il existe une nouvelle version au démarrage (désactivable), et la recherche de failles Cisco ne contacte Cisco que si tu la lances.</p></details>
+    <details><summary>Comment marche la licence Pro ?</summary><p>Pro Personnel : 45 € TTC (usage personnel ou scolaire). Pro Entreprise : 65 € TTC (usage professionnel). Par utilisateur, une seule fois. Ta version reste Pro à vie, avec 12 mois de nouvelles versions inclus. Une clé s'active sur 1 appareil, et tu peux la désactiver (Licence → Retirer) pour l'activer sur un autre PC. Le paiement passe par Polar ; la clé arrive par e-mail.</p></details>
+    <details><summary>Plusieurs licences, comment faire ?</summary><p>Une clé par achat et par utilisateur : pour 3 licences, tu achètes 3 fois et tu reçois 3 clés. Pour 5 licences ou plus, écris à <a href="mailto:contact@getvty.com?subject=Licences%20Vty%20Pro">contact@getvty.com</a> pour un tarif de groupe, un devis ou un bon de commande.</p></details>
   </div>
 </div></section>
 
 <section id="versions"><div class="wrap">
+  <p class="eyebrow">Versions</p>
   <h2>Historique des versions</h2>
   <div class="log" id="log">
     <!--versions-->
+    <div class="rel"><b>1.9.1</b><p>Bouton « ? Aide » sur chaque écran (sessions, fichiers, macros, tableau de bord, sauvegardes, configurations, commandes, audit, carte, localiser, scan de ports, découverte, clés SSH, sécurité, licence, journal des actions) : à quoi ça sert, comment faire, ce que Vty fait sur l&#x27;équipement, points d&#x27;attention. F1 l&#x27;ouvre et le ferme. Écran d&#x27;accueil : la phrase sur les mots de passe enregistrés est corrigée (enregistrés seulement si tu l&#x27;autorises, dans le coffre chiffré). Installeur .exe avec l&#x27;icône de Vty, en plus du MSI. Identifiants enregistrés : la colonne Identifiant est masquée (points), et le Client ID de l&#x27;API Cisco l&#x27;est aussi dans l&#x27;écran d&#x27;audit. Licence Pro : les clés vendues sur getvty.com (VTY-…) s&#x27;activent en ligne, sur 1 appareil à la fois (« Retirer » dans l&#x27;écran Licence libère la place), et sont revérifiées environ une fois par jour ; hors ligne, Pro reste actif 30 jours. Les 12 mois de mises à jour comptent à partir de la date d&#x27;achat. Fusion de deux historiques de configuration : dans « Rattacher », une session qui a déjà un historique peut être choisie ; les versions sont ajoutées au sien, classées par date, sans rien supprimer.</p></div>
     <div class="rel"><b>1.9.0</b><p>Clés SSH : Vty génère tes clés (Ed25519, RSA 3072 ou 4096) avec ou sans phrase secrète, les range dans l&#x27;onglet « Mes clés » et pose les bons droits Windows pour OpenSSH. Scan de ports TCP (Pro) : listes de ports prêtes ou personnalisées, filtres, export CSV. Réservé aux réseaux que tu es autorisé à tester. Découverte réseau (Pro) : ping et ports 22 / 23 / 80 / 443 sur une plage ou un CIDR, puis ajout des équipements trouvés à tes sessions en un clic. Ouverture depuis GNS3 et liens ssh:// / telnet:// (syntaxe PuTTY comprise). Si une console Telnet est ouverte en SSH par erreur, Vty propose de la rouvrir en Telnet. Telnet : « reload » et « write erase » fonctionnent sur les consoles GNS3 (la touche Entrée annulait la confirmation). Un seul écran « Configurations » : configuration actuelle, historique, comparaison et recherche. Secrets masqués par défaut, affichables 60 secondes. Bloc « Connexion » identique sur les écrans Sauvegarder, Commandes, Localiser et Carte. Réglages de la carte en 3 étapes, avec une aide sur les notions utiles. Tableau de bord plus juste : date de la dernière sauvegarde réussie, équipement injoignable distingué d&#x27;un équipement jamais testé, Telnet exclu des compteurs, filtres cliquables. Renommer une session ou changer son adresse IP garde son historique de configurations ; un historique orphelin peut être rattaché à une session (liste avec recherche). Audit : plus de note tant qu&#x27;aucune configuration n&#x27;a été analysée. Commandes en masse : une réponse vide n&#x27;est plus confondue avec une absence de réponse, et « | redirect » / « | tee » sont refusés. Formulaire de session vérifié avant l&#x27;enregistrement, Localiser plus fiable, masquage étendu (HSRP, adresses avec identifiants).</p></div>
     <div class="rel"><b>1.8.1</b><p>Mot de passe maître plus résistant aux essais en série (scrypt, 128 Mo par essai) ; les coffres existants sont mis à niveau tout seuls au prochain déverrouillage. Chiffrement des anciennes sauvegardes plus sûr : un arrêt brutal, un disque plein ou un fichier illisible ne peuvent plus abîmer une sauvegarde, et la migration reprend au démarrage suivant. Masquage des secrets étendu : NX-OS, HSRP / VRRP / NHRP, IKEv2 (clés locales et distantes), clé maître « key config-key », SNMPv3 NX-OS. Moins de faux positifs (descriptions, bannières, numéros de clé). Nouveau document SECURITE.md : comment Vty protège tes données, et ses limites.</p></div>
     <div class="rel"><b>1.8.0</b><p>Sauvegardes de configuration chiffrées sur le poste (AES-256), avec une clé protégée par ton compte Windows : un autre compte Windows ou un disque volé ne peut plus les lire. Les anciennes sauvegardes sont chiffrées automatiquement au premier démarrage. Mot de passe maître en option (menu langue en bas à gauche, puis Sécurité) : Vty le demande au démarrage, et même un administrateur du PC ne peut plus lire les sauvegardes sans lui. Verrouillage automatique après 5 à 60 minutes d&#x27;inactivité. Secrets masqués par défaut dans les journaux de session, les copies de configuration et les exports des commandes en masse (mots de passe, communautés SNMP, clés RADIUS / TACACS / SNMPv3…). Une copie avec les secrets reste possible, après confirmation. Journal des actions : multi-exec, macros, commandes dangereuses confirmées, commandes en masse, sauvegardes, audits et fichiers, avec la date, l&#x27;utilisateur et les équipements. Export CSV. Conservation des sauvegardes réglable : nombre de versions et durée par équipement.</p></div>
@@ -459,30 +628,47 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
 </div></section>
 
 <section id="telecharger"><div class="wrap">
-  <div class="dl">
-    <div>
-      <h2>Prêt en deux minutes.</h2>
-      <p>Installe, importe tes sessions PuTTY, MobaXterm ou un CSV d'équipements, et connecte-toi. La même installation sert pour la version gratuite et la version Pro.</p>
-      <div class="ctas" style="margin-top:22px">
-        <a class="btn primary" href="https://github.com/getvty/vty/releases/latest/download/Vty-setup.msi" data-goatcounter-click="telechargement-bas" data-goatcounter-title="Télécharger · bas de page"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg><span>Vty <span data-ver>1.9.0</span> pour Windows</span></a>
+  <div class="dl" style="display:block">
+    <p class="eyebrow">Télécharger</p>
+    <h2>Prêt en deux minutes.</h2>
+    <p>Installe, importe tes sessions PuTTY, MobaXterm ou un CSV d'équipements, et connecte-toi. Les trois fichiers contiennent la même application, gratuite ou Pro selon ta clé.</p>
+    <div class="dls">
+      <div class="dlc main">
+        <h3>Installeur .exe <span class="tag pro">Recommandé</span></h3>
+        <p>Installe Vty avec son icône et un raccourci dans le menu Démarrer.</p>
+        <p class="fname"><span data-file="exe">Vty-1.9.1-setup.exe</span> <span class="sz">· <span data-size="exe">17 Mo</span></span></p>
+        <details><summary>Empreinte SHA-256</summary><p class="hash" data-sha="exe">5a43491503ce47925161f7ed8242a182b826acf351a718553c2066f4e094720f</p></details>
+        <a class="btn primary big" href="https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1-setup.exe" data-dl="exe" data-goatcounter-click="telechargement-bas" data-goatcounter-title="Télécharger · .exe"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>Télécharger l'installeur</a>
       </div>
-      <div class="proof">
-        <p class="vt"><i></i><a href="https://www.virustotal.com/gui/file/55d42d4c58b952f1dcc4af0aca3d95029ab198fffa0d97604cf2db342dfe4d60" rel="noopener">Analyse VirusTotal de l'installeur</a><span data-vt-score></span></p>
-        <p>Si Windows affiche « Windows a protégé votre ordinateur » : Informations complémentaires, puis Exécuter quand même. L'installeur n'est pas encore signé.</p>
-        <p class="hash">SHA-256 : <span data-sha>55d42d4c58b952f1dcc4af0aca3d95029ab198fffa0d97604cf2db342dfe4d60</span></p>
+      <div class="dlc">
+        <h3>Paquet MSI</h3>
+        <p>Pour déployer Vty sur plusieurs postes : GPO, SCCM ou Intune.</p>
+        <p class="fname"><span data-file="msi">Vty-1.9.1.msi</span> <span class="sz">· <span data-size="msi">16 Mo</span></span></p>
+        <details><summary>Empreinte SHA-256</summary><p class="hash" data-sha="msi">4754b7865043479f0e9c8ae86049525caa8b163c07de63b97df51926eca9f19d</p></details>
+        <a class="btn ghost" href="https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1.msi" data-dl="msi" data-goatcounter-click="telechargement-msi" data-goatcounter-title="Télécharger · MSI">Télécharger le MSI</a>
+      </div>
+      <div class="dlc">
+        <h3>Version portable</h3>
+        <p>Un dossier à décompresser et à lancer, sans installation. Pratique sur clé USB.</p>
+        <p class="fname"><span data-file="zip">Vty-1.9.1-portable.zip</span> <span class="sz">· <span data-size="zip">18 Mo</span></span></p>
+        <details><summary>Empreinte SHA-256</summary><p class="hash" data-sha="zip">99e28048885b8639a8d3747094c6432d9b114b4cc21f2ff407831a755d41eb73</p></details>
+        <a class="btn ghost" href="https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1-portable.zip" data-dl="zip" data-goatcounter-click="telechargement-zip" data-goatcounter-title="Télécharger · portable">Télécharger le zip</a>
       </div>
     </div>
-    <div class="specs">
-      <div><span>Version</span><span data-ver>1.9.0</span></div>
-      <div><span>Système</span><span>Windows 10 / 11 x64</span></div>
-      <div><span>Format</span><span>.msi · <span data-size>16 Mo</span></span></div>
-      <div><span>Équipements</span><span>Cisco IOS / IOS-XE et tout appareil SSH</span></div>
-      <div><span>Prix</span><span>Gratuit · Pro 45 € HT</span></div>
+    <div class="sub-dl">
+      <p class="vt"><i></i><a href="https://www.virustotal.com/gui/file/5a43491503ce47925161f7ed8242a182b826acf351a718553c2066f4e094720f" rel="noopener">Analyse VirusTotal de l'installeur .exe</a><span data-vt-score></span></p>
+      <p><b>Windows affiche « Windows a protégé votre ordinateur » ?</b> C'est normal : le fichier n'est pas encore signé. Clique sur « Informations complémentaires », puis sur « Exécuter quand même ».</p>
     </div>
+    <div class="specline"><span><b>Version</b> <span data-ver>1.9.1</span></span><span><b>Système</b> Windows 10 / 11 x64</span><span><b>Équipements</b> Cisco IOS / IOS-XE et tout appareil SSH</span><span><b>Prix</b> Gratuit · Pro 45 €</span></div>
   </div>
 </div></section>
+</main>
 
-<div class="wrap"><footer><span>Vty · <a href="mailto:contact@getvty.com">contact@getvty.com</a> · <a href="mentions-legales.html">Mentions légales</a></span><span>Fait pour les admins réseau qui préfèrent ne pas couper un site un vendredi.</span></footer></div>
+<div class="wrap"><footer>
+  <div><a class="brand" href="#"><span class="mark">&gt;_</span>Vty</a><p class="tag-l">Fait pour les admins réseau qui préfèrent ne pas couper un site un vendredi.</p></div>
+  <div><h4>Vty</h4><ul><li><a href="#fonctions">Fonctions</a></li><li><a href="#tarifs">Tarifs</a></li><li><a href="#telecharger">Télécharger</a></li><li><a href="#versions">Historique des versions</a></li><li><a href="en/">English</a></li></ul></div>
+  <div><h4>Contact et mentions</h4><ul><li><a href="mailto:contact@getvty.com">contact@getvty.com</a></li><li><a href="mentions-legales.html">Mentions légales</a></li><li><a href="cgv.html">Conditions de vente</a></li><li><a href="confidentialite.html">Confidentialité</a></li><li><a href="licence.html">Licence</a></li></ul></div>
+</footer></div>
 
 <script>
 (function(){
@@ -495,6 +681,13 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
       function fallback(){ var r=document.createRange(); r.selectNodeContents(document.getElementById("notify-mail")); var sel=getSelection(); sel.removeAllRanges(); sel.addRange(r); try{document.execCommand("copy"); done();}catch(e){} }
     });
   }
+  var rv=document.querySelectorAll(".nw,.port,.case,.plan,.shot,.dlc,.stats,.showcase,.faq details");
+  if("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion:reduce)").matches){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); },{rootMargin:"0px 0px -8% 0px",threshold:.05});
+    rv.forEach(function(el,i){ el.classList.add("rv"); el.style.transitionDelay=((i%4)*70)+"ms"; io.observe(el); });
+  }
+  var tb=document.querySelector(".topbar");
+  if(tb){ var f=function(){ tb.classList.toggle("scrolled",window.scrollY>8); }; f(); addEventListener("scroll",f,{passive:true}); }
   var log=document.getElementById("log"), more=document.getElementById("more");
   var n=log.querySelectorAll(".rel").length;
   if(n>3){

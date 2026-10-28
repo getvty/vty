@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Mentions légales et confidentialité du site Vty.">
+<meta name="description" content="Mentions légales du site Vty : éditeur, hébergeur, médiation.">
 <title>Vty · Mentions légales</title>
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
@@ -23,12 +23,13 @@
 <style>
 /* Layout: equipment spec-sheet — hero with a live-looking console, then feature rows like front-panel port groups, download block at the end. Accent = console status LED amber. */
 :root{
-  --bg:#F3F4F1; --paper:#FFFFFF; --ink:#151B20; --muted:#5C6770; --line:#D7DCD8;
-  --slate:#24313B; --led:#E39B1B; --led-ink:#7A4E00; --ok:#2F8A57; --danger:#C2412D;
+  --bg:#0E1317; --paper:#151C21; --ink:#E6ECEF; --muted:#94A2AC; --line:#26313A;
+  --slate:#B9C8D3; --led:#F0AE3A; --led-ink:#F6C468; --ok:#5DBB86; --danger:#E8705C;
   --term-bg:#10161B; --term-fg:#D6E2EA; --term-dim:#6E8291;
   --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
   --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:dark;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0E1317; --paper:#151C21; --ink:#E6ECEF; --muted:#94A2AC; --line:#26313A;
@@ -139,6 +140,13 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
 .legal a{color:var(--ink)}
 .legal ul{padding-left:20px}
 </style>
+<style>
+.ph{background:var(--led);color:#1A1200;padding:0 5px;border-radius:4px;font-weight:600;font-size:.92em}
+.legalnav{display:flex;gap:16px;flex-wrap:wrap;font:500 13px var(--mono);margin:0 0 6px}
+.legalnav a{color:var(--muted);text-decoration:none}.legalnav a:hover,.legalnav a[aria-current]{color:var(--ink)}
+.legal .upd{font:13px var(--mono);color:var(--muted);margin:-12px 0 20px}
+.legal ol{padding-left:22px}
+</style>
 </head>
 <body>
 <div class="wrap">
@@ -147,36 +155,36 @@ footer{padding-block:34px 44px;color:var(--muted);font-size:13.5px;display:flex;
     <div class="navlinks"><a href="./#fonctions">Fonctions</a><a href="./#tarifs">Tarifs</a><a href="./#telecharger">Télécharger</a><a href="en/legal.html" hreflang="en" lang="en">English</a></div>
   </nav>
   <main class="legal">
+    <nav class="legalnav" aria-label="Documents"><a href="mentions-legales.html" aria-current="page">Mentions légales</a><a href="cgv.html">Conditions de vente</a><a href="confidentialite.html">Confidentialité</a><a href="licence.html">Licence</a></nav>
     <h1>Mentions légales</h1>
+    <p class="upd">Mis à jour le 28/10/2026</p>
 
-    <h2>Éditeur du site</h2>
-    <p>Le site getvty.com est édité par un particulier, à titre non professionnel. Conformément à l'article 6, III, 2 de la loi n° 2004-575 du 21 juin 2004 (LCEN), l'éditeur a choisi de ne pas publier son identité, qui a été communiquée à l'hébergeur.<br>
-    Contact : <a href="mailto:contact@getvty.com">contact@getvty.com</a></p>
+    <h2>Éditeur du site et du logiciel</h2>
+    <p>Le site getvty.com et le logiciel Vty sont édités par Ibrahima NDIAYE, entrepreneur individuel (micro-entreprise).<br>
+    SIRET : 131 532 822 00015<br>
+    Adresse : 71 B rue Villeneuve, 92110 Clichy, France<br>
+    Directeur de la publication : Ibrahima NDIAYE<br>
+    Contact : <a href="mailto:contact@getvty.com">contact@getvty.com</a><br>
+    TVA non applicable, article 293 B du CGI.</p>
+
+    <h2>Vente de Vty Pro</h2>
+    <p>La vente de Vty Pro est réalisée en ligne par <strong>Polar</strong>, vendeur officiel (« merchant of record ») : Polar Software, Inc., 3500 South DuPont Highway, Dover, DE 19901, États-Unis. Polar encaisse le paiement et gère la TVA. Voir les <a href="cgv.html">conditions de vente</a>.</p>
 
     <h2>Hébergement</h2>
     <p>Site : GitHub, Inc. (GitHub Pages), 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.<br>
-    Nom de domaine : OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.</p>
+    Nom de domaine et messagerie : OVH SAS, 2 rue Kellermann, 59100 Roubaix, France.</p>
 
-    <h2>Données personnelles et cookies</h2>
-    <ul>
-      <li>Ce site ne dépose <strong>aucun cookie</strong> et n'affiche aucune publicité.</li>
-      <li>La fréquentation est mesurée avec <a href="https://www.goatcounter.com/" rel="noopener">GoatCounter</a>, un outil de statistiques sans cookie qui ne suit pas les visiteurs d'un site à l'autre : seuls des chiffres agrégés sont conservés (pages vues, site d'origine, navigateur, pays, clics sur Télécharger). Aucune donnée n'est revendue.</li>
-      <li>Les polices de caractères sont hébergées sur le site lui-même : aucune requête n'est envoyée à Google ou à un autre service tiers.</li>
-      <li>Comme tout hébergeur, GitHub peut enregistrer l'adresse IP des visiteurs dans ses journaux techniques, y compris lors du téléchargement de l'installeur. Voir la <a href="https://docs.github.com/fr/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener">déclaration de confidentialité de GitHub</a>.</li>
-      <li>Si tu écris à l'adresse de contact, ton message et ton adresse e-mail servent uniquement à te répondre.</li>
-    </ul>
+    <h2>Médiation de la consommation</h2>
+    <p>Si tu es un consommateur et qu'un litige n'a pas pu être réglé avec nous, tu peux saisir gratuitement le médiateur de la consommation : CM2C (Centre de la Médiation de la Consommation de Conciliateurs de Justice), 49 rue de Ponthieu, 75008 Paris, <a href="https://www.cm2c.net" rel="noopener">www.cm2c.net</a>, téléphone 01 89 47 00 14. Saisine en ligne sur le site de CM2C..</p>
 
-    <h2>Le logiciel Vty</h2>
-    <ul>
-      <li>Vty fonctionne entièrement sur ton poste : il n'envoie aucune donnée à l'éditeur, n'enregistre aucun mot de passe et la clé de licence est vérifiée sans connexion Internet.</li>
-      <li>Au démarrage, au plus une fois par jour, Vty lit le fichier public getvty.com/version.json pour savoir si une nouvelle version existe. Cette requête ne contient aucune donnée (ni équipement, ni licence) ; elle peut être désactivée dans la fenêtre Licence. Rien n'est téléchargé ni installé automatiquement.</li>
-      <li>Facultatif et désactivé par défaut : la recherche de failles connues interroge l'API de sécurité de Cisco (PSIRT openVuln) avec la version IOS de tes équipements, à l'aide de tes propres identifiants Cisco.</li>
-    </ul>
+    <h2>Données personnelles</h2>
+    <p>Voir la <a href="confidentialite.html">politique de confidentialité</a>. Le site ne dépose aucun cookie.</p>
 
     <h2>Propriété intellectuelle</h2>
     <p>Le site et le logiciel Vty sont la propriété de leur auteur. Toute reproduction sans autorisation est interdite.<br>
     Cisco, IOS et IOS-XE sont des marques de Cisco Systems, Inc. Vty est un logiciel indépendant, sans lien avec Cisco.<br>
-    Polices : Bricolage Grotesque, IBM Plex Sans et JetBrains Mono, sous licence SIL Open Font License 1.1.</p>
+    Polices : Bricolage Grotesque, IBM Plex Sans et JetBrains Mono, sous licence SIL Open Font License 1.1.<br>
+    Composants libres inclus dans le logiciel : asyncssh (EPL-2.0 ou GPL-2.0 ou ultérieure), websockets (BSD-3-Clause), pyserial (BSD), bcrypt (Apache-2.0), cryptography (Apache-2.0 ou BSD-3-Clause), xterm.js (MIT), pywebview (BSD-3-Clause), Python (licence PSF) et PyInstaller (GPL-2.0 avec exception pour les programmes empaquetés).</p>
   </main>
   <footer><span>Vty · <a href="mailto:contact@getvty.com">contact@getvty.com</a></span><span><a href="./">Retour à l'accueil</a></span></footer>
 </div>

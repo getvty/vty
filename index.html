@@ -362,11 +362,11 @@ h2{text-wrap:balance}
 <div class="wrap">
   <div class="hero">
     <div>
-      <span class="status"><span class="ledd"></span><span>Version <span data-ver>1.9.1</span> pour Windows 10 et 11</span></span>
+      <span class="status"><span class="ledd"></span><span>Version <span data-ver>1.9.2</span> pour Windows 10 et 11</span></span>
       <h1>Gère 200 switchs Cisco <span class="hl">comme s'il n'y en avait qu'un.</span></h1>
       <p class="lead">Vty réunit tes <b>sessions SSH</b>, les <b>sauvegardes de configs</b>, l'<b>audit de sécurité</b> et les <b>commandes en masse</b> dans un seul outil. Fini les vingt fenêtres PuTTY et les copier-coller d'un switch à l'autre.</p>
       <div class="ctas">
-        <a class="btn primary big" href="https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1-setup.exe" data-dl="exe" data-goatcounter-click="telechargement-haut" data-goatcounter-title="Télécharger · haut de page"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>Télécharger gratuitement</a>
+        <a class="btn primary big" href="https://github.com/getvty/vty/releases/download/v1.9.2/Vty-1.9.2-setup.exe" data-dl="exe" data-goatcounter-click="telechargement-haut" data-goatcounter-title="Télécharger · haut de page"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>Télécharger gratuitement</a>
         <a class="btn ghost" href="#demo"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 4.5v11l9-5.5z"/></svg>Voir la démo</a>
       </div>
       <p class="altdl">Installeur .exe pour Windows 10 et 11. Aussi en <a href="#telecharger">MSI ou en version portable</a>.</p>
@@ -549,7 +549,7 @@ h2{text-wrap:balance}
         <li>Garde-fous sur les commandes dangereuses</li>
         <li>Jusqu'à 25 équipements enregistrés</li>
       </ul>
-      <a class="btn ghost" href="https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1-setup.exe" data-dl="exe" data-goatcounter-click="telechargement-gratuit" data-goatcounter-title="Télécharger · offre gratuite">Télécharger</a>
+      <a class="btn ghost" href="https://github.com/getvty/vty/releases/download/v1.9.2/Vty-1.9.2-setup.exe" data-dl="exe" data-goatcounter-click="telechargement-gratuit" data-goatcounter-title="Télécharger · offre gratuite">Télécharger</a>
     </div>
     <div class="plan pro">
       <h3>Pro Personnel</h3>
@@ -611,6 +611,7 @@ h2{text-wrap:balance}
   <h2>Historique des versions</h2>
   <div class="log" id="log">
     <!--versions-->
+    <div class="rel"><b>1.9.2</b><p>Export des sessions en CSV : menu « Import/Export » puis « Exporter mes sessions (CSV)… », ou clic droit sur un dossier puis « Exporter ce dossier (CSV)… ». Colonnes nom, IP, dossier, port et type, sans aucun mot de passe ; le fichier se réimporte tel quel dans Vty. Bouton « Import/Export » dans la barre des sessions (il remplace le bouton ⇅), et « Tout replier / Tout déplier » dans le clic droit de la liste des sessions. Tableau de bord plus sobre et plus lisible : chiffres en couleur à la place des icônes, légende claire, lignes à problème teintées, boutons « SSH » et « Historique » en texte, colonnes plus aérées. Liste « À traiter » : un gros chiffre coloré par point à traiter, et la ligne entière est cliquable. Audit : la note s&#x27;affiche en grosse lettre colorée, avec le score sur 100 et la date juste en dessous.</p></div>
     <div class="rel"><b>1.9.1</b><p>Bouton « ? Aide » sur chaque écran (sessions, fichiers, macros, tableau de bord, sauvegardes, configurations, commandes, audit, carte, localiser, scan de ports, découverte, clés SSH, sécurité, licence, journal des actions) : à quoi ça sert, comment faire, ce que Vty fait sur l&#x27;équipement, points d&#x27;attention. F1 l&#x27;ouvre et le ferme. Écran d&#x27;accueil : la phrase sur les mots de passe enregistrés est corrigée (enregistrés seulement si tu l&#x27;autorises, dans le coffre chiffré). Installeur .exe avec l&#x27;icône de Vty, en plus du MSI. Identifiants enregistrés : la colonne Identifiant est masquée (points), et le Client ID de l&#x27;API Cisco l&#x27;est aussi dans l&#x27;écran d&#x27;audit. Licence Pro : les clés vendues sur getvty.com (VTY-…) s&#x27;activent en ligne, sur 1 appareil à la fois (« Retirer » dans l&#x27;écran Licence libère la place), et sont revérifiées environ une fois par jour ; hors ligne, Pro reste actif 30 jours. Les 12 mois de mises à jour comptent à partir de la date d&#x27;achat. Fusion de deux historiques de configuration : dans « Rattacher », une session qui a déjà un historique peut être choisie ; les versions sont ajoutées au sien, classées par date, sans rien supprimer.</p></div>
     <div class="rel"><b>1.9.0</b><p>Clés SSH : Vty génère tes clés (Ed25519, RSA 3072 ou 4096) avec ou sans phrase secrète, les range dans l&#x27;onglet « Mes clés » et pose les bons droits Windows pour OpenSSH. Scan de ports TCP (Pro) : listes de ports prêtes ou personnalisées, filtres, export CSV. Réservé aux réseaux que tu es autorisé à tester. Découverte réseau (Pro) : ping et ports 22 / 23 / 80 / 443 sur une plage ou un CIDR, puis ajout des équipements trouvés à tes sessions en un clic. Ouverture depuis GNS3 et liens ssh:// / telnet:// (syntaxe PuTTY comprise). Si une console Telnet est ouverte en SSH par erreur, Vty propose de la rouvrir en Telnet. Telnet : « reload » et « write erase » fonctionnent sur les consoles GNS3 (la touche Entrée annulait la confirmation). Un seul écran « Configurations » : configuration actuelle, historique, comparaison et recherche. Secrets masqués par défaut, affichables 60 secondes. Bloc « Connexion » identique sur les écrans Sauvegarder, Commandes, Localiser et Carte. Réglages de la carte en 3 étapes, avec une aide sur les notions utiles. Tableau de bord plus juste : date de la dernière sauvegarde réussie, équipement injoignable distingué d&#x27;un équipement jamais testé, Telnet exclu des compteurs, filtres cliquables. Renommer une session ou changer son adresse IP garde son historique de configurations ; un historique orphelin peut être rattaché à une session (liste avec recherche). Audit : plus de note tant qu&#x27;aucune configuration n&#x27;a été analysée. Commandes en masse : une réponse vide n&#x27;est plus confondue avec une absence de réponse, et « | redirect » / « | tee » sont refusés. Formulaire de session vérifié avant l&#x27;enregistrement, Localiser plus fiable, masquage étendu (HSRP, adresses avec identifiants).</p></div>
     <div class="rel"><b>1.8.1</b><p>Mot de passe maître plus résistant aux essais en série (scrypt, 128 Mo par essai) ; les coffres existants sont mis à niveau tout seuls au prochain déverrouillage. Chiffrement des anciennes sauvegardes plus sûr : un arrêt brutal, un disque plein ou un fichier illisible ne peuvent plus abîmer une sauvegarde, et la migration reprend au démarrage suivant. Masquage des secrets étendu : NX-OS, HSRP / VRRP / NHRP, IKEv2 (clés locales et distantes), clé maître « key config-key », SNMPv3 NX-OS. Moins de faux positifs (descriptions, bannières, numéros de clé). Nouveau document SECURITE.md : comment Vty protège tes données, et ses limites.</p></div>
@@ -637,30 +638,30 @@ h2{text-wrap:balance}
       <div class="dlc main">
         <h3>Installeur .exe <span class="tag pro">Recommandé</span></h3>
         <p>Installe Vty avec son icône et un raccourci dans le menu Démarrer.</p>
-        <p class="fname"><span data-file="exe">Vty-1.9.1-setup.exe</span> <span class="sz">· <span data-size="exe">17 Mo</span></span></p>
-        <details><summary>Empreinte SHA-256</summary><p class="hash" data-sha="exe">2cd5ce51412dd502fc456392eff55603ace6ad6b86528b9179b85506c4dbbb2c</p></details>
-        <a class="btn primary big" href="https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1-setup.exe" data-dl="exe" data-goatcounter-click="telechargement-bas" data-goatcounter-title="Télécharger · .exe"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>Télécharger l'installeur</a>
+        <p class="fname"><span data-file="exe">Vty-1.9.2-setup.exe</span> <span class="sz">· <span data-size="exe">17 Mo</span></span></p>
+        <details><summary>Empreinte SHA-256</summary><p class="hash" data-sha="exe">232863f8fe53f8607003e1fffdf0af4e014d4cba59bb697276a101b5dcb7d7e0</p></details>
+        <a class="btn primary big" href="https://github.com/getvty/vty/releases/download/v1.9.2/Vty-1.9.2-setup.exe" data-dl="exe" data-goatcounter-click="telechargement-bas" data-goatcounter-title="Télécharger · .exe"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>Télécharger l'installeur</a>
       </div>
       <div class="dlc">
         <h3>Paquet MSI</h3>
         <p>Pour déployer Vty sur plusieurs postes : GPO, SCCM ou Intune.</p>
-        <p class="fname"><span data-file="msi">Vty-1.9.1.msi</span> <span class="sz">· <span data-size="msi">16 Mo</span></span></p>
-        <details><summary>Empreinte SHA-256</summary><p class="hash" data-sha="msi">71f1194b9ca0406f609b448ac67cdb21585469b40ba77813b19b12b6eaed9113</p></details>
-        <a class="btn ghost" href="https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1.msi" data-dl="msi" data-goatcounter-click="telechargement-msi" data-goatcounter-title="Télécharger · MSI">Télécharger le MSI</a>
+        <p class="fname"><span data-file="msi">Vty-1.9.2.msi</span> <span class="sz">· <span data-size="msi">16 Mo</span></span></p>
+        <details><summary>Empreinte SHA-256</summary><p class="hash" data-sha="msi">2b69d39da336ed1ce861c0d00c50e9dd3f14697885945c5e7ff73b4ad5ce2fa0</p></details>
+        <a class="btn ghost" href="https://github.com/getvty/vty/releases/download/v1.9.2/Vty-1.9.2.msi" data-dl="msi" data-goatcounter-click="telechargement-msi" data-goatcounter-title="Télécharger · MSI">Télécharger le MSI</a>
       </div>
       <div class="dlc">
         <h3>Version portable</h3>
         <p>Un dossier à décompresser et à lancer, sans installation. Pratique sur clé USB.</p>
-        <p class="fname"><span data-file="zip">Vty-1.9.1-portable.zip</span> <span class="sz">· <span data-size="zip">18 Mo</span></span></p>
-        <details><summary>Empreinte SHA-256</summary><p class="hash" data-sha="zip">83340306c3e92a228d079659bbfe38c378b72504d624e5e41a57711b3632ae03</p></details>
-        <a class="btn ghost" href="https://github.com/getvty/vty/releases/download/v1.9.1/Vty-1.9.1-portable.zip" data-dl="zip" data-goatcounter-click="telechargement-zip" data-goatcounter-title="Télécharger · portable">Télécharger le zip</a>
+        <p class="fname"><span data-file="zip">Vty-1.9.2-portable.zip</span> <span class="sz">· <span data-size="zip">18 Mo</span></span></p>
+        <details><summary>Empreinte SHA-256</summary><p class="hash" data-sha="zip">c1c1749bc0d6f42c66fd5843f47857380a796d2982556d3c02b4499e01e9ce89</p></details>
+        <a class="btn ghost" href="https://github.com/getvty/vty/releases/download/v1.9.2/Vty-1.9.2-portable.zip" data-dl="zip" data-goatcounter-click="telechargement-zip" data-goatcounter-title="Télécharger · portable">Télécharger le zip</a>
       </div>
     </div>
     <div class="sub-dl">
-      <p class="vt"><i></i><a href="https://www.virustotal.com/gui/file/2cd5ce51412dd502fc456392eff55603ace6ad6b86528b9179b85506c4dbbb2c" rel="noopener">Analyse VirusTotal de l'installeur .exe</a><span data-vt-score></span></p>
+      <p class="vt"><i></i><a href="https://www.virustotal.com/gui/file/232863f8fe53f8607003e1fffdf0af4e014d4cba59bb697276a101b5dcb7d7e0" rel="noopener">Analyse VirusTotal de l'installeur .exe</a><span data-vt-score></span></p>
       <p><b>Windows affiche « Windows a protégé votre ordinateur » ?</b> C'est normal : le fichier n'est pas encore signé. Clique sur « Informations complémentaires », puis sur « Exécuter quand même ».</p>
     </div>
-    <div class="specline"><span><b>Version</b> <span data-ver>1.9.1</span></span><span><b>Système</b> Windows 10 / 11 x64</span><span><b>Équipements</b> Cisco IOS / IOS-XE et tout appareil SSH</span><span><b>Prix</b> Gratuit · Pro 45 €</span></div>
+    <div class="specline"><span><b>Version</b> <span data-ver>1.9.2</span></span><span><b>Système</b> Windows 10 / 11 x64</span><span><b>Équipements</b> Cisco IOS / IOS-XE et tout appareil SSH</span><span><b>Prix</b> Gratuit · Pro 45 €</span></div>
   </div>
 </div></section>
 </main>

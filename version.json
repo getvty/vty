@@ -1,21 +1,19 @@
 {
-  "version": "1.9.1",
-  "date": "2026-10-28",
+  "version": "1.9.2",
+  "date": "2026-10-29",
   "notes": [
-    "Bouton « ? Aide » sur chaque écran (sessions, fichiers, macros, tableau de bord, sauvegardes, configurations, commandes, audit, carte, localiser, scan de ports, découverte, clés SSH, sécurité, licence, journal des actions) : à quoi ça sert, comment faire, ce que Vty fait sur l'équipement, points d'attention. F1 l'ouvre et le ferme.",
-    "Écran d'accueil : la phrase sur les mots de passe enregistrés est corrigée (enregistrés seulement si tu l'autorises, dans le coffre chiffré).",
-    "Installeur .exe avec l'icône de Vty, en plus du MSI.",
-    "Identifiants enregistrés : la colonne Identifiant est masquée (points), et le Client ID de l'API Cisco l'est aussi dans l'écran d'audit.",
-    "Licence Pro : les clés vendues sur getvty.com (VTY-…) s'activent en ligne, sur 1 appareil à la fois (« Retirer » dans l'écran Licence libère la place), et sont revérifiées environ une fois par jour ; hors ligne, Pro reste actif 30 jours. Les 12 mois de mises à jour comptent à partir de la date d'achat.",
-    "Fusion de deux historiques de configuration : dans « Rattacher », une session qui a déjà un historique peut être choisie ; les versions sont ajoutées au sien, classées par date, sans rien supprimer."
+    "Export des sessions en CSV : menu « Import/Export » puis « Exporter mes sessions (CSV)… », ou clic droit sur un dossier puis « Exporter ce dossier (CSV)… ». Colonnes nom, IP, dossier, port et type, sans aucun mot de passe ; le fichier se réimporte tel quel dans Vty.",
+    "Bouton « Import/Export » dans la barre des sessions (il remplace le bouton ⇅), et « Tout replier / Tout déplier » dans le clic droit de la liste des sessions.",
+    "Tableau de bord plus sobre et plus lisible : chiffres en couleur à la place des icônes, légende claire, lignes à problème teintées, boutons « SSH » et « Historique » en texte, colonnes plus aérées.",
+    "Liste « À traiter » : un gros chiffre coloré par point à traiter, et la ligne entière est cliquable.",
+    "Audit : la note s'affiche en grosse lettre colorée, avec le score sur 100 et la date juste en dessous."
   ],
   "notes_en": [
-    "“? Help” button on every screen (sessions, files, macros, dashboard, backups, configurations, commands, audit, map, locate, port scan, discovery, SSH keys, security, licence, action log): what it is for, how to use it, what Vty does on the device, points to watch. F1 opens and closes it.",
-    "Welcome screen: the sentence about saved passwords is corrected (saved only if you allow it, in the encrypted vault).",
-    ".exe installer with the Vty icon, in addition to the MSI.",
-    "Saved credentials: the Username column is masked (dots), and so is the Cisco API Client ID in the audit screen.",
-    "Pro license: keys sold on getvty.com (VTY-…) activate online, on 1 device at a time (“Remove” in the License screen frees the slot), and are rechecked about once a day; offline, Pro stays active for 30 days. The 12 months of updates count from the purchase date.",
-    "Merging two configuration histories: in “Attach”, a session that already has a history can be chosen; the versions are added to it, sorted by date, nothing is deleted."
+    "Export sessions to CSV: “Import/Export” menu then “Export my sessions (CSV)…”, or right-click a folder then “Export this folder (CSV)…”. Columns name, IP, folder, port and type, with no password at all; the file can be imported back into Vty as is.",
+    "“Import/Export” button in the sessions bar (it replaces the ⇅ button), and “Collapse all / Expand all” in the right-click menu of the session list.",
+    "Cleaner, easier-to-read dashboard: coloured numbers instead of icons, clear legend, tinted rows for devices with a problem, text “SSH” and “History” buttons, more spacious columns.",
+    "“To do” list: one big coloured number per item, and the whole row is clickable.",
+    "Audit: the grade is shown as a big coloured letter, with the score out of 100 and the date right below."
   ],
   "page": "https://getvty.com/#telecharger",
   "page_en": "https://getvty.com/en/#download"

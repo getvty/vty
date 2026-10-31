@@ -7,11 +7,11 @@ SSH client and serial console for Cisco switches, built for teams that manage hu
 ## Download
 
 <!--dl-en-->
-[⬇ Vty 1.9.2 for Windows](https://github.com/getvty/vty/releases/download/v1.9.2/Vty-1.9.2-setup.exe) · Windows 10 / 11 x64
+[⬇ Vty 1.9.3 for Windows](https://github.com/getvty/vty/releases/download/v1.9.3/Vty-1.9.3-setup.exe) · Windows 10 / 11 x64
 
-Other formats: [MSI](https://github.com/getvty/vty/releases/download/v1.9.2/Vty-1.9.2.msi) · [portable (zip)](https://github.com/getvty/vty/releases/download/v1.9.2/Vty-1.9.2-portable.zip)
+Other formats: [MSI](https://github.com/getvty/vty/releases/download/v1.9.3/Vty-1.9.3.msi) · [portable (zip)](https://github.com/getvty/vty/releases/download/v1.9.3/Vty-1.9.3-portable.zip)
 
-SHA-256 of `Vty-1.9.2-setup.exe`: `232863f8fe53f8607003e1fffdf0af4e014d4cba59bb697276a101b5dcb7d7e0`
+SHA-256 of `Vty-1.9.3-setup.exe`: `718271c4e14ed39525076b67d88795ebdf35e4c14cd1434439cbcc57cd7f468c`
 <!--/dl-en-->
 
 If Windows shows “Windows protected your PC”: **More info → Run anyway** (the installer isn't signed yet).
@@ -42,11 +42,11 @@ Client SSH et console série pour switchs Cisco, pensé pour les équipes qui g�
 ## Télécharger
 
 <!--dl-fr-->
-[⬇ Vty 1.9.2 pour Windows](https://github.com/getvty/vty/releases/download/v1.9.2/Vty-1.9.2-setup.exe) · Windows 10 / 11 x64
+[⬇ Vty 1.9.3 pour Windows](https://github.com/getvty/vty/releases/download/v1.9.3/Vty-1.9.3-setup.exe) · Windows 10 / 11 x64
 
-Autres formats : [MSI](https://github.com/getvty/vty/releases/download/v1.9.2/Vty-1.9.2.msi) · [portable (zip)](https://github.com/getvty/vty/releases/download/v1.9.2/Vty-1.9.2-portable.zip)
+Autres formats : [MSI](https://github.com/getvty/vty/releases/download/v1.9.3/Vty-1.9.3.msi) · [portable (zip)](https://github.com/getvty/vty/releases/download/v1.9.3/Vty-1.9.3-portable.zip)
 
-SHA-256 de `Vty-1.9.2-setup.exe` : `232863f8fe53f8607003e1fffdf0af4e014d4cba59bb697276a101b5dcb7d7e0`
+SHA-256 de `Vty-1.9.3-setup.exe` : `718271c4e14ed39525076b67d88795ebdf35e4c14cd1434439cbcc57cd7f468c`
 <!--/dl-fr-->
 
 Si Windows affiche « Windows a protégé votre ordinateur » : **Informations complémentaires → Exécuter quand même** (l'installeur n'est pas encore signé).

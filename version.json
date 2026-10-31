@@ -1,19 +1,23 @@
 {
-  "version": "1.9.2",
-  "date": "2026-10-29",
+  "version": "1.9.3",
+  "date": "2026-10-31",
   "notes": [
-    "Export des sessions en CSV : menu « Import/Export » puis « Exporter mes sessions (CSV)… », ou clic droit sur un dossier puis « Exporter ce dossier (CSV)… ». Colonnes nom, IP, dossier, port et type, sans aucun mot de passe ; le fichier se réimporte tel quel dans Vty.",
-    "Bouton « Import/Export » dans la barre des sessions (il remplace le bouton ⇅), et « Tout replier / Tout déplier » dans le clic droit de la liste des sessions.",
-    "Tableau de bord plus sobre et plus lisible : chiffres en couleur à la place des icônes, légende claire, lignes à problème teintées, boutons « SSH » et « Historique » en texte, colonnes plus aérées.",
-    "Liste « À traiter » : un gros chiffre coloré par point à traiter, et la ligne entière est cliquable.",
-    "Audit : la note s'affiche en grosse lettre colorée, avec le score sur 100 et la date juste en dessous."
+    "Cisco Business (Catalyst 1300, CBS, SG) : l'audit ignore les règles IOS sans objet sur ces switchs, reconnaît leurs équivalents (RADIUS, SNTP, comptes chiffrés, SSH) et ajoute 2 règles dédiées (serveur Telnet, ACL d'accès de gestion).",
+    "Cisco Business : la sauvegarde lit correctement la version, le modèle et l'état des ports ; la pagination « More: » est reconnue (fin des blocages de Localiser sur ces switchs).",
+    "Localiser : si une commande est refusée par un switch, Vty passe par une autre (show arp, table MAC) au lieu de s'arrêter ; il suit le switch voisin (CDP / LLDP) même derrière un port d'accès, jusqu'au bon port.",
+    "Localiser : résultat en bandeau pleine largeur (adresse, switch, port, VLAN, description, chemin depuis le cœur), « Port possible » quand plusieurs ports sont candidats.",
+    "Thème plus sombre : interface et terminaux assombris, terminal d'un équipement critique d'un rouge plus franc, bleu adouci.",
+    "Cases à cocher redessinées : dans les listes de dossiers, toute la ligne se coche (ligne surlignée et coche) ; options et choix en cases et ronds sobres.",
+    "Écrans d'outils en pleine largeur (Localiser, Sauvegarder, Commandes, Audit, Découverte, Scan) et Carte du réseau réorganisée ; bouton « Annuler » plus discret."
   ],
   "notes_en": [
-    "Export sessions to CSV: “Import/Export” menu then “Export my sessions (CSV)…”, or right-click a folder then “Export this folder (CSV)…”. Columns name, IP, folder, port and type, with no password at all; the file can be imported back into Vty as is.",
-    "“Import/Export” button in the sessions bar (it replaces the ⇅ button), and “Collapse all / Expand all” in the right-click menu of the session list.",
-    "Cleaner, easier-to-read dashboard: coloured numbers instead of icons, clear legend, tinted rows for devices with a problem, text “SSH” and “History” buttons, more spacious columns.",
-    "“To do” list: one big coloured number per item, and the whole row is clickable.",
-    "Audit: the grade is shown as a big coloured letter, with the score out of 100 and the date right below."
+    "Cisco Business (Catalyst 1300, CBS, SG): the audit skips IOS rules that do not apply to these switches, recognises their equivalents (RADIUS, SNTP, encrypted accounts, SSH) and adds 2 dedicated rules (Telnet server, management access list).",
+    "Cisco Business: backups now read the version, model and port status correctly; the “More:” pager is recognised (no more Locate hangs on these switches).",
+    "Locate: if a switch refuses a command, Vty falls back to another one (show arp, MAC table) instead of stopping; it follows the neighbour switch (CDP / LLDP) even behind an access port, down to the right port.",
+    "Locate: full-width result banner (address, switch, port, VLAN, description, path from the core), “Possible port” when several ports are candidates.",
+    "Darker theme: darker interface and terminals, a clearer red for critical devices' terminals, softer blue.",
+    "Redesigned checkboxes: in folder lists the whole row is ticked (highlighted row and check mark); options and choices use plain boxes and circles.",
+    "Full-width tool screens (Locate, Backup, Commands, Audit, Discovery, Scan) and a reorganised Network map; less prominent “Cancel” button."
   ],
   "page": "https://getvty.com/#telecharger",
   "page_en": "https://getvty.com/en/#download"

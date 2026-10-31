@@ -363,11 +363,11 @@ h2{text-wrap:balance}
 <div class="wrap">
   <div class="hero">
     <div>
-      <span class="status"><span class="ledd"></span><span>Version <span data-ver>1.9.2</span> for Windows 10 and 11</span></span>
+      <span class="status"><span class="ledd"></span><span>Version <span data-ver>1.9.3</span> for Windows 10 and 11</span></span>
       <h1>Run 200 Cisco switches <span class="hl">like they were one.</span></h1>
       <p class="lead">Vty brings your <b>SSH sessions</b>, <b>config backups</b>, <b>security audits</b> and <b>bulk commands</b> into one app. No more twenty PuTTY windows and copy-pasting from one switch to the next.</p>
       <div class="ctas">
-        <a class="btn primary big" href="https://github.com/getvty/vty/releases/download/v1.9.2/Vty-1.9.2-setup.exe" data-dl="exe" data-goatcounter-click="telechargement-haut-en" data-goatcounter-title="Download · top of page (EN)"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>Download for free</a>
+        <a class="btn primary big" href="https://github.com/getvty/vty/releases/download/v1.9.3/Vty-1.9.3-setup.exe" data-dl="exe" data-goatcounter-click="telechargement-haut-en" data-goatcounter-title="Download · top of page (EN)"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>Download for free</a>
         <a class="btn ghost" href="#demo"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M6 4.5v11l9-5.5z"/></svg>Watch the demo</a>
       </div>
       <p class="altdl">.exe installer for Windows 10 and 11. Also as an <a href="#download">MSI or a portable version</a>.</p>
@@ -550,7 +550,7 @@ h2{text-wrap:balance}
         <li>Safeguards against dangerous commands</li>
         <li>Up to 25 saved devices</li>
       </ul>
-      <a class="btn ghost" href="https://github.com/getvty/vty/releases/download/v1.9.2/Vty-1.9.2-setup.exe" data-dl="exe" data-goatcounter-click="telechargement-gratuit-en" data-goatcounter-title="Download · free plan (EN)">Download</a>
+      <a class="btn ghost" href="https://github.com/getvty/vty/releases/download/v1.9.3/Vty-1.9.3-setup.exe" data-dl="exe" data-goatcounter-click="telechargement-gratuit-en" data-goatcounter-title="Download · free plan (EN)">Download</a>
     </div>
     <div class="plan pro">
       <h3>Pro Personal</h3>
@@ -612,6 +612,7 @@ h2{text-wrap:balance}
   <h2>Release history</h2>
   <div class="log" id="log">
     <!--versions-->
+    <div class="rel"><b>1.9.3</b><p>Cisco Business (Catalyst 1300, CBS, SG): the audit skips IOS rules that do not apply to these switches, recognises their equivalents (RADIUS, SNTP, encrypted accounts, SSH) and adds 2 dedicated rules (Telnet server, management access list). Cisco Business: backups now read the version, model and port status correctly; the “More:” pager is recognised (no more Locate hangs on these switches). Locate: if a switch refuses a command, Vty falls back to another one (show arp, MAC table) instead of stopping; it follows the neighbour switch (CDP / LLDP) even behind an access port, down to the right port. Locate: full-width result banner (address, switch, port, VLAN, description, path from the core), “Possible port” when several ports are candidates. Darker theme: darker interface and terminals, a clearer red for critical devices&#x27; terminals, softer blue. Redesigned checkboxes: in folder lists the whole row is ticked (highlighted row and check mark); options and choices use plain boxes and circles. Full-width tool screens (Locate, Backup, Commands, Audit, Discovery, Scan) and a reorganised Network map; less prominent “Cancel” button.</p></div>
     <div class="rel"><b>1.9.2</b><p>Export sessions to CSV: “Import/Export” menu then “Export my sessions (CSV)…”, or right-click a folder then “Export this folder (CSV)…”. Columns name, IP, folder, port and type, with no password at all; the file can be imported back into Vty as is. “Import/Export” button in the sessions bar (it replaces the ⇅ button), and “Collapse all / Expand all” in the right-click menu of the session list. Cleaner, easier-to-read dashboard: coloured numbers instead of icons, clear legend, tinted rows for devices with a problem, text “SSH” and “History” buttons, more spacious columns. “To do” list: one big coloured number per item, and the whole row is clickable. Audit: the grade is shown as a big coloured letter, with the score out of 100 and the date right below.</p></div>
     <div class="rel"><b>1.9.1</b><p>“? Help” button on every screen (sessions, files, macros, dashboard, backups, configurations, commands, audit, map, locate, port scan, discovery, SSH keys, security, licence, action log): what it is for, how to use it, what Vty does on the device, points to watch. F1 opens and closes it. Welcome screen: the sentence about saved passwords is corrected (saved only if you allow it, in the encrypted vault). .exe installer with the Vty icon, in addition to the MSI. Saved credentials: the Username column is masked (dots), and so is the Cisco API Client ID in the audit screen. Pro license: keys sold on getvty.com (VTY-…) activate online, on 1 device at a time (“Remove” in the License screen frees the slot), and are rechecked about once a day; offline, Pro stays active for 30 days. The 12 months of updates count from the purchase date. Merging two configuration histories: in “Attach”, a session that already has a history can be chosen; the versions are added to it, sorted by date, nothing is deleted.</p></div>
     <div class="rel"><b>1.9.0</b><p>SSH keys: Vty generates your keys (Ed25519, RSA 3072 or 4096) with or without a passphrase, keeps them in the “My keys” tab and sets the right Windows permissions for OpenSSH. TCP port scan (Pro): ready-made or custom port lists, filters, CSV export. Only for networks you are allowed to test. Network discovery (Pro): ping and ports 22 / 23 / 80 / 443 on a range or a CIDR, then add the devices found to your sessions in one click. Open from GNS3 and ssh:// / telnet:// links (PuTTY syntax understood). If a Telnet console is opened over SSH by mistake, Vty offers to reopen it in Telnet. Telnet: “reload” and “write erase” now work on GNS3 consoles (the Enter key was cancelling the confirmation). A single “Configurations” screen: current configuration, history, comparison and search. Secrets hidden by default, revealable for 60 seconds. Identical “Connection” block on the Backup, Commands, Locate and Map screens. Map settings in 3 steps, with help on the key notions. More accurate dashboard: date of the last successful backup, unreachable device told apart from a never-tested one, Telnet excluded from the counters, clickable filters. Renaming a session or changing its IP address keeps its configuration history; an orphan history can be attached to a session (list with search). Audit: no grade until a configuration has been analysed. Bulk commands: an empty reply is no longer confused with no reply, and “| redirect” / “| tee” are refused. Session form checked before saving, more reliable Locate, extended masking (HSRP, addresses with credentials).</p></div>
@@ -639,30 +640,30 @@ h2{text-wrap:balance}
       <div class="dlc main">
         <h3>.exe installer <span class="tag pro">Recommended</span></h3>
         <p>Installs Vty with its icon and a Start menu shortcut.</p>
-        <p class="fname"><span data-file="exe">Vty-1.9.2-setup.exe</span> <span class="sz">· <span data-size="exe">17 MB</span></span></p>
-        <details><summary>SHA-256 fingerprint</summary><p class="hash" data-sha="exe">232863f8fe53f8607003e1fffdf0af4e014d4cba59bb697276a101b5dcb7d7e0</p></details>
-        <a class="btn primary big" href="https://github.com/getvty/vty/releases/download/v1.9.2/Vty-1.9.2-setup.exe" data-dl="exe" data-goatcounter-click="telechargement-bas-en" data-goatcounter-title="Download · .exe (EN)"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>Download the installer</a>
+        <p class="fname"><span data-file="exe">Vty-1.9.3-setup.exe</span> <span class="sz">· <span data-size="exe">17 MB</span></span></p>
+        <details><summary>SHA-256 fingerprint</summary><p class="hash" data-sha="exe">718271c4e14ed39525076b67d88795ebdf35e4c14cd1434439cbcc57cd7f468c</p></details>
+        <a class="btn primary big" href="https://github.com/getvty/vty/releases/download/v1.9.3/Vty-1.9.3-setup.exe" data-dl="exe" data-goatcounter-click="telechargement-bas-en" data-goatcounter-title="Download · .exe (EN)"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 3v10M5.5 8.5 10 13l4.5-4.5M4 17h12"/></svg>Download the installer</a>
       </div>
       <div class="dlc">
         <h3>MSI package</h3>
         <p>To deploy Vty on several computers: GPO, SCCM or Intune.</p>
-        <p class="fname"><span data-file="msi">Vty-1.9.2.msi</span> <span class="sz">· <span data-size="msi">16 MB</span></span></p>
-        <details><summary>SHA-256 fingerprint</summary><p class="hash" data-sha="msi">2b69d39da336ed1ce861c0d00c50e9dd3f14697885945c5e7ff73b4ad5ce2fa0</p></details>
-        <a class="btn ghost" href="https://github.com/getvty/vty/releases/download/v1.9.2/Vty-1.9.2.msi" data-dl="msi" data-goatcounter-click="telechargement-msi-en" data-goatcounter-title="Download · MSI (EN)">Download the MSI</a>
+        <p class="fname"><span data-file="msi">Vty-1.9.3.msi</span> <span class="sz">· <span data-size="msi">16 MB</span></span></p>
+        <details><summary>SHA-256 fingerprint</summary><p class="hash" data-sha="msi">0acf00a95072753b7102a08b5dc07807cdfaf2f2aae21879890afd3b2b9a6d45</p></details>
+        <a class="btn ghost" href="https://github.com/getvty/vty/releases/download/v1.9.3/Vty-1.9.3.msi" data-dl="msi" data-goatcounter-click="telechargement-msi-en" data-goatcounter-title="Download · MSI (EN)">Download the MSI</a>
       </div>
       <div class="dlc">
         <h3>Portable version</h3>
         <p>A folder to unzip and run, no installation. Handy on a USB stick.</p>
-        <p class="fname"><span data-file="zip">Vty-1.9.2-portable.zip</span> <span class="sz">· <span data-size="zip">18 MB</span></span></p>
-        <details><summary>SHA-256 fingerprint</summary><p class="hash" data-sha="zip">c1c1749bc0d6f42c66fd5843f47857380a796d2982556d3c02b4499e01e9ce89</p></details>
-        <a class="btn ghost" href="https://github.com/getvty/vty/releases/download/v1.9.2/Vty-1.9.2-portable.zip" data-dl="zip" data-goatcounter-click="telechargement-zip-en" data-goatcounter-title="Download · portable (EN)">Download the zip</a>
+        <p class="fname"><span data-file="zip">Vty-1.9.3-portable.zip</span> <span class="sz">· <span data-size="zip">18 MB</span></span></p>
+        <details><summary>SHA-256 fingerprint</summary><p class="hash" data-sha="zip">15a198979e313cd240ce45e7b679fe172c077bdb50033fab4643449b42824eb7</p></details>
+        <a class="btn ghost" href="https://github.com/getvty/vty/releases/download/v1.9.3/Vty-1.9.3-portable.zip" data-dl="zip" data-goatcounter-click="telechargement-zip-en" data-goatcounter-title="Download · portable (EN)">Download the zip</a>
       </div>
     </div>
     <div class="sub-dl">
-      <p class="vt"><i></i><a href="https://www.virustotal.com/gui/file/232863f8fe53f8607003e1fffdf0af4e014d4cba59bb697276a101b5dcb7d7e0" rel="noopener">VirusTotal scan of the .exe installer</a><span data-vt-score></span></p>
+      <p class="vt"><i></i><a href="https://www.virustotal.com/gui/file/718271c4e14ed39525076b67d88795ebdf35e4c14cd1434439cbcc57cd7f468c" rel="noopener">VirusTotal scan of the .exe installer</a><span data-vt-score></span></p>
       <p><b>Windows shows “Windows protected your PC”?</b> That is normal: the file isn't signed yet. Click “More info”, then “Run anyway”.</p>
     </div>
-    <div class="specline"><span><b>Version</b> <span data-ver>1.9.2</span></span><span><b>System</b> Windows 10 / 11 x64</span><span><b>Devices</b> Cisco IOS / IOS-XE and any SSH device</span><span><b>Price</b> Free · Pro €45</span></div>
+    <div class="specline"><span><b>Version</b> <span data-ver>1.9.3</span></span><span><b>System</b> Windows 10 / 11 x64</span><span><b>Devices</b> Cisco IOS / IOS-XE and any SSH device</span><span><b>Price</b> Free · Pro €45</span></div>
   </div>
 </div></section>
 </main>
